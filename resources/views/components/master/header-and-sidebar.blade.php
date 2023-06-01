@@ -41,7 +41,7 @@
             width="100">
         <span class="brand-text font-weight-light">Digicow Customer</span>
     </a>
-    {{--  img-circle     --}}
+
     <!-- Sidebar -->
     <div class="sidebar">
         {{--  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -63,71 +63,81 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <?php
+                $current_route_one = Illuminate\Support\Facades\Request::segment(1);
                 $current_route = Illuminate\Support\Facades\Request::segment(2);
                 ?>
                 <x-backend-navigation menu-title="Dashboard" fa-class="fa-tachometer-alt"
                     routes="{{ url('dashboard') }}" active-route='dashboard' />
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item  {{ $current_route_one == 'cow' ? 'menu-is-opening menu-open' : null }}">
+                    <a href="#" class="nav-link {{ $current_route_one == 'cow' ? 'active' : null }}">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Cows
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview" style="display: none;">
+                    <ul class="nav nav-treeview"
+                        style="display: {{ $current_route_one == 'cow' ? 'block' : 'none' }} ;">
                         <li class="nav-item">
-                            <a href="{{ url('cow/new-register') }}" class="nav-link">
+                            <a href="{{ url('cow/new-register') }}"
+                                class="nav-link {{ $current_route == 'new-register' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Register New Cow</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('cow/sold-register') }}" class="nav-link">
+                            <a href="{{ url('cow/sold-register') }}"
+                                class="nav-link  {{ $current_route == 'sold-register' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> Record Sold Cow</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('cow/dead-register') }}" class="nav-link">
+                            <a href="{{ url('cow/dead-register') }}"
+                                class="nav-link  {{ $current_route == 'dead-register' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> Record Dead Cow</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('cow/genetic-register') }}" class="nav-link">
+                            <a href="{{ url('cow/genetic-register') }}"
+                                class="nav-link {{ $current_route == 'genetic-register' ? 'active' : null }} ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> Update Genetic Record </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('cow/list') }}" class="nav-link">
+                            <a href="{{ url('cow/list') }}"
+                                class="nav-link {{ $current_route == 'list' ? 'active' : null }} ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> View All </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('cow/dead-list') }}" class="nav-link">
+                            <a href="{{ url('cow/dead-list') }}"
+                                class="nav-link {{ $current_route == 'dead-list' ? 'active' : null }} ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> View Dead </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('cow/sold-list') }}" class="nav-link">
+                            <a href="{{ url('cow/sold-list') }}"
+                                class="nav-link {{ $current_route == 'sold-list' ? 'active' : null }} ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> View sold </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('cow/deleted-list') }}" class="nav-link">
+                            <a href="{{ url('cow/deleted-list') }}"
+                                class="nav-link {{ $current_route == 'deleted-list' ? 'active' : null }} ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> View Deleted </p>
                             </a>
@@ -136,66 +146,75 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ $current_route_one == 'calfs' ? 'menu-is-opening menu-open' : null }} ">
+                    <a href="#" class="nav-link {{ $current_route_one == 'calfs' ? 'active' : null }}">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Calfs
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview" style="display: none;">
+                    <ul class="nav nav-treeview"
+                        style="display: {{ $current_route_one == 'calfs' ? 'block' : 'none' }};">
                         <li class="nav-item">
-                            <a href="{{ url('calfs/new-register') }}" class="nav-link">
+                            <a href="{{ url('calfs/new-register') }}"
+                                class="nav-link {{ $current_route == 'new-register' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Register New Calfs</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('calfs/sold-register') }}" class="nav-link">
+                            <a href="{{ url('calfs/sold-register') }}"
+                                class="nav-link {{ $current_route == 'sold-register' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> Record Sold Calf</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('calfs/dead-register') }}" class="nav-link">
+                            <a href="{{ url('calfs/dead-register') }}"
+                                class="nav-link {{ $current_route == 'dead-register' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> Record Dead Calf</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('calfs/genetic-register') }}" class="nav-link">
+                            <a href="{{ url('calfs/genetic-register') }}"
+                                class="nav-link {{ $current_route == 'genetic-register' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> Update Genetic Record </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('calfs/list') }}" class="nav-link">
+                            <a href="{{ url('calfs/list') }}"
+                                class="nav-link {{ $current_route == 'list' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> View All </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('calfs/dead-list') }}" class="nav-link">
+                            <a href="{{ url('calfs/dead-list') }}"
+                                class="nav-link {{ $current_route == 'dead-list' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> View Dead </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('calfs/sold-list') }}" class="nav-link">
+                            <a href="{{ url('calfs/sold-list') }}"
+                                class="nav-link {{ $current_route == 'sold-list' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> View sold </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('calfs/deleted-list') }}" class="nav-link">
+                            <a href="{{ url('calfs/deleted-list') }}"
+                                class="nav-link {{ $current_route == 'deleted-list' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p> View Deleted </p>
                             </a>
@@ -205,30 +224,118 @@
                 </li>
 
 
-                <x-backend-navigation menu-title="Record Milk Production" fa-class="far fa-circle nav-icon"
-                    routes="{{ url('record-milk-production/list') }}" active-route='record-milk-production' />
-
+                {{--  <x-backend-navigation menu-title="Record Milk Production" fa-class="far fa-circle nav-icon"
+                    routes="{{ url('record-milk-production/list') }}" active-route='list' />  --}}
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('record-milk-production/list') }}"
+                        class="nav-link  {{ $current_route == 'list' ? 'active' : null }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Record Milk Production</p>
+                    </a>
+                </li>
+
+                <li
+                    class="nav-item {{ $current_route_one == 'record-milk-production' ? 'menu-is-opening menu-open' : null }}">
+                    <a href="#"
+                        class="nav-link {{ $current_route_one == 'record-milk-production' ? 'active' : null }}">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Milk Production Report
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview" style="display: none;">
+                    <ul class="nav nav-treeview"
+                        style="display: {{ $current_route_one == 'record-milk-production' ? 'block' : 'none' }};">
                         <li class="nav-item">
-                            <a href="{{ url('record-milk-production/per-cow') }}" class="nav-link">
+                            <a href="{{ url('record-milk-production/per-cow') }}"
+                                class="nav-link  {{ $current_route == 'per-cow' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Per Cow</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url('record-milk-production/all-cow') }}" class="nav-link">
+                            <a href="{{ url('record-milk-production/all-cow') }}"
+                                class="nav-link  {{ $current_route == 'all-cow' ? 'active' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All Cow</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item {{ $current_route_one == 'feeding' ? 'menu-is-opening menu-open' : null }}">
+                    <a href="#" class="nav-link {{ $current_route_one == 'feeding' ? 'active' : null }}">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Feed Record
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview"
+                        style="display: {{ $current_route_one == 'feeding' ? 'block' : 'none' }};">
+                        <li class="nav-item">
+                            <a href="{{ url('feeding/feed-create') }}"
+                                class="nav-link  {{ $current_route == 'feed-create' ? 'active' : null }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Concentrates</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url('feeding/feed-minerals-create') }}"
+                                class="nav-link  {{ $current_route == 'feed-minerals-create' ? 'active' : null }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Minerals and Others</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url('feeding/feed-basal-create') }}"
+                                class="nav-link  {{ $current_route == 'feed-basal-create' ? 'active' : null }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Basal</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <x-backend-navigation menu-title="Feed Report" fa-class="far fa-circle nav-icon"
+                    routes="{{ url('feeding/feed-report-list') }}" active-route='feed-report-list' />
+
+                <li class="nav-item {{ $current_route_one == 'feed' ? 'menu-is-opening menu-open' : null }}">
+                    <a href="#" class="nav-link {{ $current_route_one == 'feed' ? 'active' : null }}">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Feed Stock Record
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview"
+                        style="display: {{ $current_route_one == 'feed' ? 'block' : 'none' }};">
+                        <li class="nav-item">
+                            <a href="{{ url('feed/stock-create') }}"
+                                class="nav-link  {{ $current_route == 'stock-create' ? 'active' : null }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Concentrates</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url('feed/stock-minerals-create') }}"
+                                class="nav-link  {{ $current_route == 'stock-minerals-create' ? 'active' : null }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Minerals and Others</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url('feed/stock-basal-create') }}"
+                                class="nav-link  {{ $current_route == 'stock-basal-create' ? 'active' : null }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Basal</p>
                             </a>
                         </li>
                     </ul>

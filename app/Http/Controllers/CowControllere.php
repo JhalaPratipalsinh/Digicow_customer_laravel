@@ -273,7 +273,7 @@ class CowControllere extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function paginateCow(Request $request): JsonResponse
+    public function paginatFeeedReport(Request $request): JsonResponse
     {
         $whereforcow = [
             'mobile_number' =>  Auth::guard('web')->user()['mobile_number'],

@@ -79,8 +79,8 @@
 
                                         </div>
                                         <br>
-                                        <div class="box-body table-responsive" id="hide-cow" style="display: none">
-                                            <table id="cow-list" class="table table-bordered table-striped display"  >
+                                        <div class="box-body table-responsive" id="hide-cow">
+                                            <table id="cow-list" class="table table-bordered table-striped display">
                                                 <thead>
                                                     <tr>
                                                         <th>Date</th>
@@ -94,6 +94,8 @@
                                                 <tbody id="milkData">
 
                                                     <?php
+                                                    $today = array();
+                                                    $bar_all = array();
                                                     foreach ($milk_production as $product) {
                                                         $milk = explode(',', $product['milk']);
                                                         $time = explode(',', $product['time']);
@@ -108,6 +110,9 @@
                                                         <td>{{ array_sum($milkval) }}</td>
                                                     </tr>
                                                     <?php
+                                                        $today[] = date('jS M', strtotime($product['milking_date']));
+                                                        $bar_all[]= array_sum($milkval);
+
                                                     }
                                                     ?>
 
@@ -119,6 +124,39 @@
                                     </div><!-- /.box -->
                                 </div>
                             </div>
+
+                            <br>
+                            <br>
+                            <?php $cow_name  = !empty($cow_name[0]) ? $cow_name[0] : '' ?>
+                            <div class="row" id="graph">
+                                <div class="col-md-12">
+                                    <!-- Bar chart -->
+                                    <div class="card card-success">
+                                        <div class="card-header">
+                                            <h3 class="card-title"><?php echo  $cow_name . ' Milk Production'; ?></h3>
+
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <canvas id="stackedBarChart"
+                                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+
 
 
 
@@ -153,12 +191,48 @@
                 $('#form1').submit();
             }
         });
-        $('#hide-cow').show();
+
         $("#cow_id").change(function() {
-
             $('#form1').submit();
-
-
         });
+
+        //-------------
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas = $('#stackedBarChart').get(0).getContext('2d');
+        barChartData = {
+            labels: <?php echo json_encode($today); ?>,
+
+            datasets: [{
+                label: 'Total Milk',
+                backgroundColor: 'rgba(60,141,188,0.9)',
+                borderColor: 'rgba(60,141,188,0.8)',
+                pointRadius: false,
+                pointColor: '#3b8bba',
+                pointStrokeColor: 'rgba(60,141,188,1)',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data: <?php echo json_encode($bar_all); ?>
+            }, ]
+        }
+
+        var barChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            datasetFill: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+
+        new Chart(barChartCanvas, {
+            type: 'bar',
+            data: barChartData,
+            options: barChartOptions
+        })
     </script>
 @endsection

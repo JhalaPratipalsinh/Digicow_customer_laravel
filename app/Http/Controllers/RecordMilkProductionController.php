@@ -208,6 +208,8 @@ class RecordMilkProductionController extends Controller
 
         $data['cows'] = $this->cowRepository->getCowByWhere(['mobile_number' => Auth::guard('web')->user()['mobile_number']])->pluck('title', 'id');
 
+        $data['cow_name'] = $this->cowRepository->getCowByWhere(['id' => $request->cow_id])->pluck('title');
+
         $data['milk_production'] = $this->milkproductionRepository->getAllMilkProductionReport($where)['data'];
         if(!empty($request->all_cow)){
             return view('components.milkRecord.all-cow', $data);

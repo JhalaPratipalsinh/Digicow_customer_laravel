@@ -3,8 +3,10 @@
 use App\Http\Controllers\CowCalfController;
 use App\Http\Controllers\CowControllere;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeedingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecordMilkProductionController;
+use App\Http\Controllers\StockController;
 use App\Http\Middleware\DataTablePaginate;
 use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +30,7 @@ Route::post('authenticate', [LoginController::class, 'checkAuth']);
 Route::get('logout', [LoginController::class, 'logout']);
 
 
-Route::group(['middleware' => UserMiddleware::class] , function(){
+Route::group(['middleware' => UserMiddleware::class], function () {
 
     Route::get('dashboard', [DashboardController::class, 'index']);
 
@@ -59,8 +61,6 @@ Route::group(['middleware' => UserMiddleware::class] , function(){
 
         Route::get('deleted-list', [CowControllere::class, 'deletedList']);
         Route::post('deleted-paginate', [CowControllere::class, 'paginateDeleted'])->middleware([DataTablePaginate::class]);
-
-
     });
 
 
@@ -90,7 +90,6 @@ Route::group(['middleware' => UserMiddleware::class] , function(){
 
         Route::get('deleted-list', [CowCalfController::class, 'deletedList']);
         Route::post('deleted-paginate', [CowCalfController::class, 'paginateDeleted'])->middleware([DataTablePaginate::class]);
-
     });
 
 
@@ -100,9 +99,52 @@ Route::group(['middleware' => UserMiddleware::class] , function(){
         Route::post('milk-store', [RecordMilkProductionController::class, 'milkStore']);
         Route::get('per-cow', [RecordMilkProductionController::class, 'perCowReport']);
         Route::post('json-per-cow', [RecordMilkProductionController::class, 'jsonPerCow']);
-
         Route::get('all-cow', [RecordMilkProductionController::class, 'allCowReport']);
     });
 
-});
 
+    Route::prefix('feeding')->group(function () {
+        Route::get('feed-create', [FeedingController::class , 'feedCreate']);
+        Route::post('feed-store',[FeedingController::class,'feedStore']);
+
+        Route::get('feed-minerals-create', [FeedingController::class , 'feedMineralsCreate']);
+        Route::post('feed-minerals-store',[FeedingController::class,'feedMineralsStore']);
+
+        Route::get('feed-basal-create', [FeedingController::class , 'feedBasalCreate']);
+        //Route::post('feed-basal-store',[FeedingController::class,'feedBasalStore']);
+
+        Route::get('feed-consum-grass-create', [FeedingController::class , 'feedConsumGrassCreate']);
+        Route::post('feed-grass-store',[FeedingController::class,'feedGrassStore']);
+
+        Route::get('feed-consum-hay-create', [FeedingController::class , 'feedConsumHayCreate']);
+        Route::post('feed-hay-store',[FeedingController::class,'feedHayStore']);
+
+        Route::get('feed-consum-other-create', [FeedingController::class , 'feedConsumOtherCreate']);
+        Route::post('feed-other-store',[FeedingController::class,'feedOtherStore']);
+
+        Route::get('feed-report-list', [FeedingController::class , 'feedReportList']);
+        Route::post('feed-paginate', [FeedingController::class, 'paginatFeeedReport'])->middleware([DataTablePaginate::class]);
+    });
+
+
+
+    Route::prefix('feed')->group(function () {
+        Route::get('stock-create', [StockController::class , 'stockCreate']);
+        Route::post('stock-store',[StockController::class,'stockStore']);
+
+        Route::get('stock-minerals-create', [StockController::class , 'stockMineralsCreate']);
+        Route::post('stock-minerals-store',[StockController::class,'stockMineralsStore']);
+
+        Route::get('stock-basal-create', [StockController::class , 'stockBasalCreate']);
+        //Route::post('stock-basal-store',[StockController::class,'stockBasalStore']);
+
+        Route::get('stock-consum-grass-create', [StockController::class , 'stockConsumGrassCreate']);
+        Route::post('stock-grass-store',[StockController::class,'stockGrassStore']);
+
+        Route::get('stock-consum-hay-create', [StockController::class , 'stockConsumHayCreate']);
+        Route::post('stock-hay-store',[StockController::class,'stockHayStore']);
+
+        Route::get('stock-consum-other-create', [StockController::class , 'stockConsumOtherCreate']);
+        Route::post('stock-other-store',[StockController::class,'stockOtherStore']);
+    });
+});

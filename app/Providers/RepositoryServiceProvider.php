@@ -6,11 +6,13 @@ use App\Repositories\Interfaces\CalfRepositoryInterface;
 use App\Repositories\Interfaces\CowBreedRepositoryinterface;
 use App\Repositories\Interfaces\CowGroupRepositoryinterface;
 use App\Repositories\Interfaces\CowRepositoryInterface;
+use App\Repositories\Interfaces\FeedingRepositoryInterface;
 use App\Repositories\Interfaces\MilkProductionRepositortInterface;
 use App\Repositories\Repository\CalfRepository;
 use App\Repositories\Repository\CowBreedRepository;
 use App\Repositories\Repository\CowGroupRepository;
 use App\Repositories\Repository\CowRepository;
+use App\Repositories\Repository\FeedingRepository;
 use App\Repositories\Repository\MilkProductionRepositort;
 use Illuminate\Support\ServiceProvider;
 
@@ -56,6 +58,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             MilkProductionRepositortInterface::class,
             MilkProductionRepositort::class
+        );
+        $this->app->bind(
+            FeedingRepositoryInterface::class,
+            FeedingRepository::class
         );
 
     }
