@@ -11,9 +11,9 @@
 
 
 <!-- InputMask -->
-<script src="{{ asset('assets/plugins/inputmask/jquery.inputmask.js') }}"></script>
+<!-- <script src="{{ asset('assets/plugins/inputmask/jquery.inputmask.js') }}"></script>
 <script src="{{ asset('assets/plugins/inputmask/jquery.inputmask.date.extensions.js') }}"></script>
-<script src="{{ asset('assets/plugins/inputmask/jquery.inputmask.extensions.js') }}"></script>
+<script src="{{ asset('assets/plugins/inputmask/jquery.inputmask.extensions.js') }}"></script> -->
 
 <!-- JQVMap -->
 <!-- <script src="{{ asset('assets/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
@@ -49,6 +49,7 @@
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
 
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/common.js') }}"></script>

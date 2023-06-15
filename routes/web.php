@@ -1,11 +1,17 @@
 <?php
 
+use App\Http\Controllers\BreedingController;
 use App\Http\Controllers\CowCalfController;
 use App\Http\Controllers\CowControllere;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FarmerClientsController;
 use App\Http\Controllers\FeedingController;
+use App\Http\Controllers\HealthController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MilkPaymentController;
+use App\Http\Controllers\MilkSalesController;
 use App\Http\Controllers\RecordMilkProductionController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StockController;
 use App\Http\Middleware\DataTablePaginate;
 use App\Http\Middleware\UserMiddleware;
@@ -104,47 +110,146 @@ Route::group(['middleware' => UserMiddleware::class], function () {
 
 
     Route::prefix('feeding')->group(function () {
-        Route::get('feed-create', [FeedingController::class , 'feedCreate']);
-        Route::post('feed-store',[FeedingController::class,'feedStore']);
+        Route::get('feed-create', [FeedingController::class, 'feedCreate']);
+        Route::post('feed-store', [FeedingController::class, 'feedStore']);
 
-        Route::get('feed-minerals-create', [FeedingController::class , 'feedMineralsCreate']);
-        Route::post('feed-minerals-store',[FeedingController::class,'feedMineralsStore']);
+        Route::get('feed-minerals-create', [FeedingController::class, 'feedMineralsCreate']);
+        Route::post('feed-minerals-store', [FeedingController::class, 'feedMineralsStore']);
 
-        Route::get('feed-basal-create', [FeedingController::class , 'feedBasalCreate']);
+        Route::get('feed-basal-create', [FeedingController::class, 'feedBasalCreate']);
         //Route::post('feed-basal-store',[FeedingController::class,'feedBasalStore']);
 
-        Route::get('feed-consum-grass-create', [FeedingController::class , 'feedConsumGrassCreate']);
-        Route::post('feed-grass-store',[FeedingController::class,'feedGrassStore']);
+        Route::get('feed-consum-grass-create', [FeedingController::class, 'feedConsumGrassCreate']);
+        Route::post('feed-grass-store', [FeedingController::class, 'feedGrassStore']);
 
-        Route::get('feed-consum-hay-create', [FeedingController::class , 'feedConsumHayCreate']);
-        Route::post('feed-hay-store',[FeedingController::class,'feedHayStore']);
+        Route::get('feed-consum-hay-create', [FeedingController::class, 'feedConsumHayCreate']);
+        Route::post('feed-hay-store', [FeedingController::class, 'feedHayStore']);
 
-        Route::get('feed-consum-other-create', [FeedingController::class , 'feedConsumOtherCreate']);
-        Route::post('feed-other-store',[FeedingController::class,'feedOtherStore']);
+        Route::get('feed-consum-other-create', [FeedingController::class, 'feedConsumOtherCreate']);
+        Route::post('feed-other-store', [FeedingController::class, 'feedOtherStore']);
 
-        Route::get('feed-report-list', [FeedingController::class , 'feedReportList']);
+        Route::get('feed-report-list', [FeedingController::class, 'feedReportList']);
         Route::post('feed-paginate', [FeedingController::class, 'paginatFeeedReport'])->middleware([DataTablePaginate::class]);
     });
 
 
 
     Route::prefix('feed')->group(function () {
-        Route::get('stock-create', [StockController::class , 'stockCreate']);
-        Route::post('stock-store',[StockController::class,'stockStore']);
+        Route::get('stock-create', [StockController::class, 'stockCreate']);
+        Route::post('stock-store', [StockController::class, 'stockStore']);
 
-        Route::get('stock-minerals-create', [StockController::class , 'stockMineralsCreate']);
-        Route::post('stock-minerals-store',[StockController::class,'stockMineralsStore']);
+        Route::get('stock-minerals-create', [StockController::class, 'stockMineralsCreate']);
+        Route::post('stock-minerals-store', [StockController::class, 'stockMineralsStore']);
 
-        Route::get('stock-basal-create', [StockController::class , 'stockBasalCreate']);
+        Route::get('stock-basal-create', [StockController::class, 'stockBasalCreate']);
         //Route::post('stock-basal-store',[StockController::class,'stockBasalStore']);
 
-        Route::get('stock-consum-grass-create', [StockController::class , 'stockConsumGrassCreate']);
-        Route::post('stock-grass-store',[StockController::class,'stockGrassStore']);
+        Route::get('stock-consum-grass-create', [StockController::class, 'stockConsumGrassCreate']);
+        Route::post('stock-grass-store', [StockController::class, 'stockGrassStore']);
 
-        Route::get('stock-consum-hay-create', [StockController::class , 'stockConsumHayCreate']);
-        Route::post('stock-hay-store',[StockController::class,'stockHayStore']);
+        Route::get('stock-consum-hay-create', [StockController::class, 'stockConsumHayCreate']);
+        Route::post('stock-hay-store', [StockController::class, 'stockHayStore']);
 
-        Route::get('stock-consum-other-create', [StockController::class , 'stockConsumOtherCreate']);
-        Route::post('stock-other-store',[StockController::class,'stockOtherStore']);
+        Route::get('stock-consum-other-create', [StockController::class, 'stockConsumOtherCreate']);
+        Route::post('stock-other-store', [StockController::class, 'stockOtherStore']);
     });
+
+
+
+    Route::prefix('milk-sales')->group(function () {
+        Route::get('customer-create', [MilkSalesController::class, 'customerCreate']);
+        Route::post('customer-store', [MilkSalesController::class, 'customerStore']);
+
+        Route::get('coop-create', [MilkSalesController::class, 'coopCreate']);
+        Route::post('coop-store', [MilkSalesController::class, 'coopStore']);
+    });
+
+    Route::prefix('milk-payment')->group(function () {
+        Route::get('customer-pay-create', [MilkPaymentController::class, 'customerPayCreate']);
+        Route::post('customer-pay-store', [MilkPaymentController::class, 'customerPayStore']);
+
+        Route::get('coop-pay-create', [MilkPaymentController::class, 'coopPayCreate']);
+        Route::post('coop-pay-store', [MilkPaymentController::class, 'coopPayStore']);
+    });
+
+
+    Route::prefix('farmer-clients-customer')->group(function () {
+        Route::get('create', [FarmerClientsController::class, 'customerCreate']);
+        Route::post('customer-store', [FarmerClientsController::class, 'customerStore']);
+        Route::get('farmar-client-remove/{client_id}', [FarmerClientsController::class, 'farmarClientRemove']);
+        Route::get('farmar-client-edit/{client_id}', [FarmerClientsController::class, 'farmarClientEdit']);
+        Route::put('customer-update/{client_id}', [FarmerClientsController::class, 'customerUpdate']);
+        Route::get('customer-list', [FarmerClientsController::class, 'customerList']);
+        Route::post('customer-paginate', [FarmerClientsController::class, 'paginatCustomerReport'])->middleware([DataTablePaginate::class]);
+    });
+
+    Route::prefix('farmer-coop')->group(function () {
+        Route::get('create', [FarmerClientsController::class, 'coopCreate']);
+        Route::post('coop-store', [FarmerClientsController::class, 'coopStore']);
+        Route::get('farmar-coop-remove/{coop_id}', [FarmerClientsController::class, 'farmarCoopRemove']);
+        Route::get('farmar-coop-edit/{coop_id}', [FarmerClientsController::class, 'farmarCoopEdit']);
+        Route::put('coop-update/{coop_id}', [FarmerClientsController::class, 'coopUpdate']);
+        Route::get('coop-list', [FarmerClientsController::class, 'coopList']);
+        Route::post('coop-paginate', [FarmerClientsController::class, 'paginatCoopReport'])->middleware([DataTablePaginate::class]);
+    });
+
+    Route::prefix('milk-sale-report')->group(function () {
+        Route::get('all-customer-list', [MilkSalesController::class, 'allCustomerList']);
+        Route::post('coop-paginate', [MilkSalesController::class, 'paginatCoopReport'])->middleware([DataTablePaginate::class]);
+    });
+
+    Route::prefix('staff')->group(function () {
+        Route::get('create-staff', [StaffController::class, 'staffCreate']);
+        Route::post('staff-store', [StaffController::class, 'staffStore']);
+
+        Route::get('staff-list', [StaffController::class, 'allstaffList']);
+        Route::get('change-status', [StaffController::class, 'changeStatus']);
+
+        Route::get('staff-edit/{staff_id}', [StaffController::class, 'editStaff']);
+        Route::put('staff-update/{staff_id}', [StaffController::class,'updateStaff']);
+    });
+
+
+    Route::prefix('artificial-insemination')->group(function () {
+        Route::get('create-artificial', [BreedingController::class, 'staffArtificial']);
+        Route::post('artificial-store', [BreedingController::class, 'artificialStore']);
+
+        Route::get('artificial-list', [BreedingController::class, 'allArtificialList']);
+        Route::post('artificial-paginate', [BreedingController::class, 'paginatArtificial'])->middleware([DataTablePaginate::class]);
+    });
+
+
+    Route::prefix('health-record')->group(function () {
+        Route::get('create-treatment', [HealthController::class, 'CreateTreatment']);
+        Route::post('treatment-store', [HealthController::class, 'treatmentStore']);
+
+        Route::get('create-vaccine', [HealthController::class, 'createVaccine']);
+        Route::post('vaccine-store', [HealthController::class, 'vaccineStore']);
+
+        Route::get('create-dewormer', [HealthController::class, 'createDewormer']);
+        Route::post('dewormer-store', [HealthController::class, 'dewormerStore']);
+    });
+
+
+    Route::prefix('health-report')->group(function () {
+        Route::get('list-treatment', [HealthController::class, 'allTreatmentList']);
+        Route::post('treatment-paginate', [HealthController::class, 'paginatTreatment'])->middleware([DataTablePaginate::class]);
+        Route::get('health-remove/{teeatment_id}', [HealthController::class, 'treatmentRemove']);
+        Route::get('edit-treatment/{teeatment_id}', [HealthController::class, 'editTreatment']);
+        Route::put('update-treatment/{teeatment_id}', [HealthController::class, 'updateTreatment']);
+
+
+        Route::get('list-vaccine', [HealthController::class, 'allVaccineList']);
+        Route::post('vaccine-paginate', [HealthController::class, 'paginatVaccine'])->middleware([DataTablePaginate::class]);
+
+
+        Route::get('list-dewormer', [HealthController::class, 'allDewormerList']);
+        Route::post('dewormer-paginate', [HealthController::class, 'paginatDewormer'])->middleware([DataTablePaginate::class]);
+        Route::get('dewormer-remove/{dewormer_id}', [HealthController::class, 'dewormerRemove']);
+        Route::get('edit-dewormer/{dewormer_id}', [HealthController::class, 'editDewormer']);
+        Route::put('update-dewormer/{dewormer_id}', [HealthController::class, 'updateDewormer']);
+
+    });
+
+
 });
