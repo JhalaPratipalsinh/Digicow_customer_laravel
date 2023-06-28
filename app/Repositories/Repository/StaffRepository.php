@@ -46,6 +46,10 @@ class StaffRepository implements StaffRepositoryInterface
             if (isset($filter['mobile_number'])) {
                 $staff->where('mobile_number', '=', $filter['mobile_number']);
             }
+
+            if (isset($filter['status'])) {
+                $staff->where('status', '=', $filter['status']);
+            }
         }
 
         $staff->where('deleted_at', '=', NULL);

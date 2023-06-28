@@ -13,6 +13,7 @@ use App\Repositories\Interfaces\HealthRepositoryInterface;
 use App\Repositories\Interfaces\MilkpaymentsRepositoryInterface;
 use App\Repositories\Interfaces\MilkProductionRepositortInterface;
 use App\Repositories\Interfaces\MilksalesRepositoryInterface;
+use App\Repositories\Interfaces\SalaryRepositoryInterface;
 use App\Repositories\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Repository\BreedingRepository;
 use App\Repositories\Repository\CalfRepository;
@@ -25,6 +26,7 @@ use App\Repositories\Repository\HealthRepository;
 use App\Repositories\Repository\MilkpaymentsRepository;
 use App\Repositories\Repository\MilkProductionRepositort;
 use App\Repositories\Repository\MilksalesRepository;
+use App\Repositories\Repository\SalaryRepository;
 use App\Repositories\Repository\StaffRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -104,6 +106,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             HealthRepositoryInterface::class,
             HealthRepository::class
+        );
+
+        $this->app->bind(
+            SalaryRepositoryInterface::class,
+            SalaryRepository::class
         );
 
     }

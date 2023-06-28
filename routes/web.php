@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MilkPaymentController;
 use App\Http\Controllers\MilkSalesController;
 use App\Http\Controllers\RecordMilkProductionController;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StockController;
 use App\Http\Middleware\DataTablePaginate;
@@ -249,6 +250,16 @@ Route::group(['middleware' => UserMiddleware::class], function () {
         Route::get('edit-dewormer/{dewormer_id}', [HealthController::class, 'editDewormer']);
         Route::put('update-dewormer/{dewormer_id}', [HealthController::class, 'updateDewormer']);
 
+    });
+
+
+
+    Route::prefix('salary')->group(function () {
+        Route::get('create-salary', [SalaryController::class, 'createSalary']);
+        Route::post('salary-store', [SalaryController::class, 'salaryStore']);
+
+        Route::get('artificial-list', [SalaryController::class, 'allArtificialList']);
+        Route::post('artificial-paginate', [SalaryController::class, 'paginatArtificial'])->middleware([DataTablePaginate::class]);
     });
 
 

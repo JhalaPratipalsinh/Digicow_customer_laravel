@@ -554,6 +554,32 @@
                 </ul>
             </li>
 
+
+
+            <li class="nav-item {{ $current_route_one == 'salary' ? 'menu-is-opening menu-open' : null }}">
+                <a href="#" class="nav-link {{ $current_route_one == 'salary' ? 'active' : null }}">
+                    <i class="nav-icon fas fa-chart-pie"></i>
+                    <p>
+                        Salary
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview" style="display:{{ $current_route_one == 'salary' ? 'block' : 'none' }}">
+                    <li class="nav-item">
+                        <a href="{{ url('salary/create-salary') }}" class="nav-link  {{ $current_route == 'create-salary' ? 'active' : null }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Record</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url('salary/list-vaccine') }}" class="nav-link  {{ $current_route == 'list-vaccine' ? 'active' : null }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Report</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
 
