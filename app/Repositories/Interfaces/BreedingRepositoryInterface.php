@@ -19,4 +19,6 @@ interface BreedingRepositoryInterface
     public function getPaidBreedingList(array $filter = []);
 
     public function getBreeding(string $id);
+
+    public function getHieghestRepeatAI(array $where = []);
 }

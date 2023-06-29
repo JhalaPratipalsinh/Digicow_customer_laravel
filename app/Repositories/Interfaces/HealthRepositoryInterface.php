@@ -19,4 +19,6 @@ interface HealthRepositoryInterface
     public function getPaidHealthList(array $filter = []);
 
     public function destroy(string $treantment_id);
+
+    public function getHieghestHealthExpense(array $where = []);
 }

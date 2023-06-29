@@ -183,4 +183,14 @@ class HealthRepository implements HealthRepositoryInterface
     {
         return Health::destroy($multiple_id);
     }
+
+    public function getHieghestHealthExpense(array $where = [])
+    {
+        $milk_production = Health::select(DB::raw('SUM(cost) as cost, cow_name'))->where($where);
+        $milk_production->groupBy('cow_name');
+        $milk_production->orderByDesc('cost');
+        $milk_production->limit(1);
+        $result = $milk_production->get();
+        return $result[0]['cow_name'];
+    }
 }

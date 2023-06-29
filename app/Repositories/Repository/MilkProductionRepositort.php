@@ -109,4 +109,62 @@ class MilkProductionRepositort implements MilkProductionRepositortInterface
 
         return ['total' => $totalRecords, 'data' => $result];
     }
+
+    public function getHieghestmilkProducer(array $where = [])
+    {
+        $milk_production = MilkProduction::select(DB::raw('SUM(milk_quantity) as milk_quantity, cow'))->where($where);
+        $milk_production->groupBy('cow');
+        $milk_production->orderByDesc('milk_quantity');
+        $milk_production->limit(1);
+        $result = $milk_production->get();
+        return $result[0]['cow'];
+    }
+
+    public function getLowestmilkProducer(array $where = [])
+    {
+        $milk_production = MilkProduction::select(DB::raw('SUM(milk_quantity) as milk_quantity, cow'))->where($where);
+        $milk_production->groupBy('cow');
+        $milk_production->orderBy('milk_quantity','asc');
+        $milk_production->limit(1);
+        $result = $milk_production->get();
+        return $result[0]['cow'];
+    }
+
+    public function getTotalProductionofToday(array $where = [])
+    {
+        $today = Carbon::today()->format('Y-m-d');
+        $milk_production = MilkProduction::select(DB::raw('SUM(milk_quantity) as milk_quantity'))->where($where);
+        $milk_production->where('milking_date', '=', $today);
+        $result = $milk_production->get();
+        if($result){
+            return round($result[0]['milk_quantity'],2);
+        }
+        else{
+            return 0;
+        }
+    }
+
+    public function getAvgProduction(array $where = [])
+    {
+        $milk_production = MilkProduction::select(DB::raw('AVG(milk_quantity) as milk_quantity'))->where($where);
+        $result = $milk_production->get();
+        if($result){
+            return round($result[0]['milk_quantity'],2);
+        }
+        else{
+            return 0;
+        }
+    }
+
+    public function getTotalProduction(array $where = [])
+    {
+        $milk_production = MilkProduction::select(DB::raw('SUM(milk_quantity) as milk_quantity'))->where($where);
+        $result = $milk_production->get();
+        if($result){
+            return round($result[0]['milk_quantity'],2);
+        }
+        else{
+            return 0;
+        }
+    }
 }

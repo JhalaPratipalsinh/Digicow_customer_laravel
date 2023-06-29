@@ -19,4 +19,10 @@ interface CowRepositoryInterface
     public function getAllSoldCow(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null , array $where);
 
     public function getAllDeleteCow(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null, array $where);
+
+    public function getLactatingCows(array $where = []);
+
+    public function getDryingCows(array $where = []);
+
+    public function getCalfCows(array $where = []);
 }

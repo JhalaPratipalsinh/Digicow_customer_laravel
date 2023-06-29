@@ -16,7 +16,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>0</h3>
+                            <h3>{{ $highest_milk_producer; }}</h3>
                             <p>Highest Milk Producer</p>
                         </div>
                         <div class="icon">
@@ -28,7 +28,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>0</h3>
+                            <h3>{{ $total_milk_production_today }}</h3>
 
                             <p>Total production for today </p>
                         </div>
@@ -41,7 +41,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>0</h3>
+                            <h3>{{ $avg_milk_production }}</h3>
                             <p>Avg. milk Production/Day </p>
                         </div>
                         <div class="icon">
@@ -54,7 +54,7 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>
-                                0
+                                {{ $total_milk_production }}
                             </h3>
                             <p>Total Milk produced to date</p>
                         </div>
@@ -74,7 +74,7 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3>
-                                <?php echo 0; ?>
+                                {{ $lowest_milk_producer; }}
                             </h3>
                             <p>
                                 Lowest Milk Producer
@@ -90,7 +90,7 @@
                     <div class="small-box bg-green">
                         <div class="inner">
                             <h3>
-                                <?php echo 0; ?>
+                                {{ $total_lactating_cows }}
                             </h3>
                             <p>
                                 Lactating Cows
@@ -106,7 +106,7 @@
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>
-                                <?php echo 0; ?>
+                                {{ $total_drying_cows }}
                             </h3>
                             <p>
                                 Drying Cows
@@ -122,7 +122,7 @@
                     <div class="small-box bg-red">
                         <div class="inner">
                             <h3>
-                                <?php echo 0; ?>
+                                {{ $total_calf_cows }}
                             </h3>
                             <p>
                                 In Calf Cows
@@ -144,7 +144,7 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3>
-                                <?php echo 0; ?>
+                                {{ $highest_health_expense }}
                             </h3>
                             <p>
                                 Highest Health Expense
@@ -160,7 +160,7 @@
                     <div class="small-box bg-green">
                         <div class="inner">
                             <h3>
-                                <?php echo 0; ?>
+                                {{ $highest_repeat_ai }}
                             </h3>
                             <p>
                                 Highest number of repeat AI

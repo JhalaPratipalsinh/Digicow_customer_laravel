@@ -178,4 +178,13 @@ class BreedingRepository implements BreedingRepositoryInterface
 
     }
 
+    public function getHieghestRepeatAI(array $where = [])
+    {
+        $breeding = Breeding::select(DB::raw('SUM(repeats) as repeats, cow_name'))->where($where);
+        $breeding->groupBy('cow_name');
+        $breeding->orderByDesc('repeats');
+        $breeding->limit(1);
+        $result = $breeding->get();
+        return $result[0]['cow_name'];
+    }
 }

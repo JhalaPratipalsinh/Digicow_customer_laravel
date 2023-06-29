@@ -237,7 +237,44 @@ class CowRepository implements CowRepositoryInterface
     }
 
 
+    public function getLactatingCows(array $where = [])
+    {
+        $lact_cow = Cow::select(DB::raw('count(id) as id'))->where($where);
+        $lact_cow->where('group_id', 1) ;
+        $result = $lact_cow->get();
+        if($result){
+            return $result[0]['id'];
+        }
+        else{
+            return 0;
+        }
+    }
 
+    public function getDryingCows(array $where = [])
+    {
+        $lact_cow = Cow::select(DB::raw('count(id) as id'))->where($where);
+        $lact_cow->where('group_id', 2) ;
+        $result = $lact_cow->get();
+        if($result){
+            return $result[0]['id'];
+        }
+        else{
+            return 0;
+        }
+    }
+
+    public function getCalfCows(array $where = [])
+    {
+        $lact_cow = Cow::select(DB::raw('count(id) as id'))->where($where);
+        $lact_cow->where('group_id', 3) ;
+        $result = $lact_cow->get();
+        if($result){
+            return $result[0]['id'];
+        }
+        else{
+            return 0;
+        }
+    }
 
     /*
     public function getTotalBreeding(array $filter = [])
