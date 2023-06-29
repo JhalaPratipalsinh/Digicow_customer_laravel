@@ -16,7 +16,7 @@ class Cow extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['firebase_id', 'sid', 'breed_id', 'cow_breeding_1', 'cow_breeding_2', 'group_id', 'mobile_number', 'title', 'ear_code', 'date_of_birth', 'calving_lactation', 'dam', 'dam_code', 'dam_father', 'dam_father_code', 'dam_id', 'dam_mother', 'dam_mother_code', 'sire', 'sire_code', 'sire_father', 'sire_father_code', 'sire_mother', 'sire_mother_code', 'status', 'sync_at', 'firebase_json'];
+    protected $fillable = ['firebase_id', 'sid', 'breed_id', 'cow_breeding_1', 'cow_breeding_2', 'group_id', 'mobile_number', 'title', 'ear_code', 'date_of_birth', 'calving_lactation', 'dam', 'dam_code', 'dam_father', 'dam_father_code', 'dam_id', 'dam_mother', 'dam_mother_code', 'sire', 'sire_code', 'sire_father', 'sire_father_code', 'sire_mother', 'sire_mother_code', 'status', 'insert_from', 'sync_at', 'firebase_json'];
 
     public function breed(): BelongsTo
     {

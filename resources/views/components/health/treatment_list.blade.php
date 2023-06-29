@@ -9,9 +9,9 @@
 <!-- Content Header (Page header) -->
 @php
 $breadcrumb = '<li class="breadcrumb-item"><a href="">Dashboard</a></li>';
-$breadcrumb .= '<li class="breadcrumb-item active">Breeding List</li>';
+$breadcrumb .= '<li class="breadcrumb-item active">Treatment List</li>';
 @endphp
-<x-backend-breadcrumb title="Breeding List" breadcrumb="{{$breadcrumb}}" />
+<x-backend-breadcrumb title="Treatment List" breadcrumb="{{$breadcrumb}}" />
 <!-- /.content-header -->
 
 <!-- Main content -->
