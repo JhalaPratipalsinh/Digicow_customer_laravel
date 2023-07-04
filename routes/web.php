@@ -14,6 +14,8 @@ use App\Http\Controllers\RecordMilkProductionController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\OtherIncomeController;
+use App\Http\Controllers\OtherExpenseController;
 use App\Http\Middleware\DataTablePaginate;
 use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -155,8 +157,6 @@ Route::group(['middleware' => UserMiddleware::class], function () {
         Route::post('stock-other-store', [StockController::class, 'stockOtherStore']);
     });
 
-
-
     Route::prefix('milk-sales')->group(function () {
         Route::get('customer-create', [MilkSalesController::class, 'customerCreate']);
         Route::post('customer-store', [MilkSalesController::class, 'customerStore']);
@@ -239,10 +239,8 @@ Route::group(['middleware' => UserMiddleware::class], function () {
         Route::get('edit-treatment/{teeatment_id}', [HealthController::class, 'editTreatment']);
         Route::put('update-treatment/{teeatment_id}', [HealthController::class, 'updateTreatment']);
 
-
         Route::get('list-vaccine', [HealthController::class, 'allVaccineList']);
         Route::post('vaccine-paginate', [HealthController::class, 'paginatVaccine'])->middleware([DataTablePaginate::class]);
-
 
         Route::get('list-dewormer', [HealthController::class, 'allDewormerList']);
         Route::post('dewormer-paginate', [HealthController::class, 'paginatDewormer'])->middleware([DataTablePaginate::class]);
@@ -252,15 +250,33 @@ Route::group(['middleware' => UserMiddleware::class], function () {
 
     });
 
-
-
     Route::prefix('salary')->group(function () {
         Route::get('create-salary', [SalaryController::class, 'createSalary']);
         Route::post('salary-store', [SalaryController::class, 'salaryStore']);
-
-        Route::get('artificial-list', [SalaryController::class, 'allArtificialList']);
-        Route::post('artificial-paginate', [SalaryController::class, 'paginatArtificial'])->middleware([DataTablePaginate::class]);
+        Route::get('list-salary', [SalaryController::class, 'allSalaryList']);
+        Route::post('salary-paginate', [SalaryController::class, 'paginatSalary'])->middleware([DataTablePaginate::class]);
+        Route::get('salary-remove/{salary_id}', [SalaryController::class, 'salaryRemove']);
     });
 
+    /**
+     * Other Incomes Crud
+     */
+    Route::group(['prefix' => 'other_incomes'], function() {
+        Route::get('create-income', [OtherIncomeController::class, 'createIncome']);
+        Route::post('income-store', [OtherIncomeController::class, 'storeOtherIncomes']);
+        Route::get('list-income', [OtherIncomeController::class, 'allIncomeList']);
+        Route::post('income-paginate', [OtherIncomeController::class, 'paginatIncome'])->middleware([DataTablePaginate::class]);
+        Route::get('income-remove/{income_id}', [OtherIncomeController::class, 'incomeRemove']);
+    });
 
+    /**
+     * Other Expenses Crud
+     */
+    Route::group(['prefix' => 'other_expenses'], function() {
+        Route::get('create-expense', [OtherExpenseController::class, 'createExpense']);
+        Route::post('expense-store', [OtherExpenseController::class, 'storeOtherExpense']);
+        Route::get('list-expense', [OtherExpenseController::class, 'allExpenseList']);
+        Route::post('expense-paginate', [OtherExpenseController::class, 'paginatExpense'])->middleware([DataTablePaginate::class]);
+        Route::get('expense-remove/{expense_id}', [OtherExpensesController::class, 'expenseRemove']);
+    });
 });

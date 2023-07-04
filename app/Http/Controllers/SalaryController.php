@@ -68,4 +68,33 @@ class SalaryController extends Controller
             dd($ex);
         }
     }
+
+    public function allSalaryList()
+    {
+        return view('components.salary.salary_list');
+    }
+
+    public function paginatSalary(Request $request): JsonResponse
+    {
+        $where = [
+            'mobile_number' =>  Auth::guard('web')->user()['mobile_number'],
+        ];
+        $result = $this->salaryRepository->getAll($with = [], $request->start, $request->rowperpage, $request->columnName, $request->columnSortOrder, $request->searchValue, $where);
+        $result['draw'] = $request->draw;
+        return response()->json(new DataTableRs($result));
+    }
+
+    public function salaryRemove(string $id)
+    {
+        $request_data = [
+            'id' => $id
+        ];
+        $request_data['deleted_at'] = date('Y-m-d H:i:s');
+
+        $this->salaryRepository->createOrUpdate($request_data, $id);
+
+        Session::flash('message_success', 'Salary record removed.');
+
+        return redirect('salary/list-salary');
+    }
 }

@@ -27,42 +27,27 @@ class SalaryRepository implements SalaryRepositoryInterface
 
     public function getAll(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null, array $filter = []): array
     {
-        $salary = Salary::select(DB::raw('*'))->where('id', '<>', null);
+        $salary = Salary::join('staff', 'staff.id', '=', 'salary.employe_id');
+        $salary->where('salary.id', '<>', null); // Specify table name for salary.id
 
         if ($filter) {
             if (isset($filter['id'])) {
-                $salary->where('id', '=', $filter['id']);
+                $salary->where('salary.id', '=', $filter['id']); // Specify table name for salary.id
             }
             if (isset($filter['mobile_number'])) {
-                $salary->where('mobile_number', '=', $filter['mobile_number']);
-            }
-
-            if(isset($filter['datetype'])){
-                $curr_date = Carbon::now()->format('Y-m-d');
-                if ($filter['datetype'] == 'today') {
-                    $salary->whereDate('date', $curr_date );
-                }
-                if ($filter['datetype'] == 'week') {
-                    $salary->whereBetween('date', [Carbon::now()->subDays(7)->format('Y-m-d'), $curr_date]);
-                }
-                if ($filter['datetype'] == 'month') {
-                    $salary->whereBetween('date', [Carbon::now()->subDays(30)->format('Y-m-d'), $curr_date]);
-                }
-                if ($filter['datetype'] == 'year') {
-                    $salary->whereYear('date',  Carbon::now()->year);
-                }
+                $salary->where('salary.mobile_number', '=', $filter['mobile_number']); // Specify table name for salary.mobile_number
             }
         }
 
-        $salary->where('deleted_at', '=', NULL);
-        $clone_dead_cow = clone $salary;
-        $totalRecords = $clone_dead_cow->count();
+        $salary->where('salary.deleted_at', '=', NULL);
 
         if ($rawperpage) {
             $salary->take($rawperpage)->skip($start);
         }
 
-        $result = $salary->get()->sortByDesc("id");
+        $totalRecords = $salary->count();
+
+        $result = $salary->get(['salary.*', 'staff.name', 'staff.staff_mobile_number'])->sortByDesc("salary.id");
 
         return ['total' => $totalRecords, 'data' => $result];
     }

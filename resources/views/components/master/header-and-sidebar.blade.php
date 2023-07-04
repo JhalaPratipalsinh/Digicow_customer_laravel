@@ -573,9 +573,34 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ url('salary/list-vaccine') }}" class="nav-link  {{ $current_route == 'list-vaccine' ? 'active' : null }}">
+                        <a href="{{ url('salary/list-salary') }}" class="nav-link  {{ $current_route == 'list-salary' ? 'active' : null }}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Report</p>
+                            <p>List</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item {{ $current_route_one == 'other_incomes' ? 'menu-is-opening menu-open' : null }}">
+                <a href="#" class="nav-link {{ $current_route_one == 'other_incomes' ? 'active' : null }}">
+                    <i class="nav-icon fas fa-chart-pie"></i>
+                    <p>
+                        Other Income
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview" style="display:{{ $current_route_one == 'other_incomes' ? 'block' : 'none' }}">
+                    <li class="nav-item">
+                        <a href="{{ url('other_incomes/create-income') }}" class="nav-link  {{ $current_route == 'create-income' ? 'active' : null }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add Income</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url('other_incomes/list-income') }}" class="nav-link  {{ $current_route == 'list-income' ? 'active' : null }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Income List</p>
                         </a>
                     </li>
                 </ul>

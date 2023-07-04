@@ -5,25 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Salary extends Model
+class Other_incomes extends Model
 {
     use HasFactory;
 
     protected $connection = 'mysql_second';
 
-    public $table = "salary";
+    public $table = "other_incomes";
     public $fillable = [
         'id',
-        'employe_id',
-        'mobile_number',
+        'name',
+        'mobile',
         'amount',
-        'date',
-        'insert_from',
+        'date_selected',
         'created_at'
     ];
-
-    public function staff()
-    {
-        return $this->belongsTo(Staff::class, 'employe_id');
-    }
 }

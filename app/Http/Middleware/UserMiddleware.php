@@ -17,8 +17,8 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('web')->check() ) {
-
+        if (Auth::guard('web')->check())
+        {
             return $next($request);
         }
 
