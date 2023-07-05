@@ -24,13 +24,13 @@ class OtherExpenseController extends Controller
         $this->otherExpenseRepository = $otherExpenseRepository;
     }
 
-    public function createIncome()
+    public function createExpense()
     {
         return view('components.other_expense.create_other_expense');
     }
 
 
-    public function storeOtherIncomes(OtherExpenseStoreRequest $request)
+    public function storeOtherExpense(OtherExpenseStoreRequest $request)
     {
         try {
 
@@ -53,12 +53,12 @@ class OtherExpenseController extends Controller
         }
     }
 
-    public function allIncomeList()
+    public function allExpenseList()
     {
         return view('components.other_expense.other_expense_list');
     }
 
-    public function paginatIncome(Request $request): JsonResponse
+    public function paginatExpense(Request $request): JsonResponse
     {
         $where = [
             'mobile' =>  Auth::guard('web')->user()['mobile_number'],
@@ -68,7 +68,7 @@ class OtherExpenseController extends Controller
         return response()->json(new DataTableRs($result));
     }
 
-    public function incomeRemove(string $id)
+    public function expenseRemove(string $id)
     {
         $request_data = [
             'id' => $id
