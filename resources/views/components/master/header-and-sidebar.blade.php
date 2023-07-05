@@ -605,6 +605,31 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item {{ $current_route_one == 'other_expenses' ? 'menu-is-opening menu-open' : null }}">
+                <a href="#" class="nav-link {{ $current_route_one == 'other_expenses' ? 'active' : null }}">
+                    <i class="nav-icon fas fa-chart-pie"></i>
+                    <p>
+                        Other Expense
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview" style="display:{{ $current_route_one == 'other_expenses' ? 'block' : 'none' }}">
+                    <li class="nav-item">
+                        <a href="{{ url('other_expenses/create-expense') }}" class="nav-link  {{ $current_route == 'create-expense' ? 'active' : null }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add Expense</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url('other_expenses/list-expense') }}" class="nav-link  {{ $current_route == 'list-expense' ? 'active' : null }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Expense List</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
 
