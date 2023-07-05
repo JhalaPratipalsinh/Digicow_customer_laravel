@@ -16,6 +16,7 @@ use App\Repositories\Interfaces\MilksalesRepositoryInterface;
 use App\Repositories\Interfaces\SalaryRepositoryInterface;
 use App\Repositories\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Interfaces\OtherIncomeRepositoryInterface;
+use App\Repositories\Interfaces\OtherExpenseRepositoryInterface;
 use App\Repositories\Repository\BreedingRepository;
 use App\Repositories\Repository\CalfRepository;
 use App\Repositories\Repository\CowBreedRepository;
@@ -30,6 +31,7 @@ use App\Repositories\Repository\MilksalesRepository;
 use App\Repositories\Repository\SalaryRepository;
 use App\Repositories\Repository\StaffRepository;
 use App\Repositories\Repository\OtherIncomeRepository;
+use App\Repositories\Repository\OtherExpenseRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -119,5 +121,11 @@ class RepositoryServiceProvider extends ServiceProvider
             OtherIncomeRepositoryInterface::class,
             OtherIncomeRepository::class
         );
+
+        $this->app->bind(
+            OtherExpenseRepositoryInterface::class,
+            OtherExpenseRepository::class
+        );
     }
+
 }
