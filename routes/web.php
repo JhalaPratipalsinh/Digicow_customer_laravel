@@ -277,6 +277,6 @@ Route::group(['middleware' => UserMiddleware::class], function () {
         Route::post('expense-store', [OtherExpenseController::class, 'storeOtherExpense']);
         Route::get('list-expense', [OtherExpenseController::class, 'allExpenseList']);
         Route::post('expense-paginate', [OtherExpenseController::class, 'paginatExpense'])->middleware([DataTablePaginate::class]);
-        Route::get('expense-remove/{expense_id}', [OtherExpensesController::class, 'expenseRemove']);
+        Route::get('expense-remove/{expense_id}', [OtherExpenseController::class, 'expenseRemove']);
     });
 });
