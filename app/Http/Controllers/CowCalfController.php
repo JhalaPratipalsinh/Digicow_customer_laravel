@@ -301,7 +301,7 @@ class CowCalfController extends Controller
     {
         $request_data['deleted_at'] = date('Y-m-d H:i:s');
 
-        $this->calfRepository->createOrUpdateDeadCow($request_data, $id);
+        $this->calfRepository->createOrUpdate($request_data, $id);
         Session::flash('message_success', 'Active Calf deleted');
         return redirect('calfs/list');
     }
