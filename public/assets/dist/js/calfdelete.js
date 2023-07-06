@@ -74,25 +74,6 @@ $('#calf-delete-list').DataTable({
             return status ? status : '' ;
         },
         targets: 6,
-    },
-    {
-        render: function (data, type, row) {
-
-            //     <a href="`+ BASE_URL + `/farmer/view-farmer/` + row.farmer_vet_id + `" target="_blank" class="btn btn-sm btn-primary" title="View Details">
-            //     <i class="fa fa-eye"></i>
-            // </a>
-            // <a href="`+ BASE_URL + `/farmer/edit/` + row.farmer_vet_id + `" class="btn btn-sm btn-success" title="Edit">
-            //     <i class="fa fa-edit"></i>
-            // </a>
-            var action = `
-
-            <a href="`+ BASE_URL + `/farmer/farmer-remove/` + row.farmer_vet_id + `" class="btn btn-sm btn-danger" title="Remove" onclick="return confirm('Are you sure?')">
-                <i class="fa fa-trash"></i>
-            </a>
-            `;
-            return action;
-        },
-        targets: 7,
     }
     ],
 });
