@@ -38,7 +38,6 @@ $breadcrumb .= '<li class="breadcrumb-item active">Calf List</li>';
                                     <th>Age</th>
                                     <th>Weight</th>
                                     <th>Status</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>

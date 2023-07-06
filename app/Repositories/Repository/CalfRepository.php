@@ -98,7 +98,7 @@ class CalfRepository implements CalfRepositoryInterface
         if (!empty($where)) {
             $cow->where('mobile_number', $where['mobile_number']);
         }
-
+        $cow->where('deleted_at', '=', NULL);
         $clone_cow = clone $cow;
         $totalRecords = $clone_cow->count();
 
