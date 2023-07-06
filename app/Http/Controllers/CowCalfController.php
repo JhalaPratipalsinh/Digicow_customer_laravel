@@ -297,6 +297,15 @@ class CowCalfController extends Controller
         return response()->json(new DataTableRS($result));
     }
 
+    public function deleteActiveCalf($id)
+    {
+        $request_data['deleted_at'] = date('Y-m-d H:i:s');
+
+        $this->calfRepository->createOrUpdateDeadCow($request_data, $id);
+        Session::flash('message_success', 'Active Calf deleted');
+        return redirect('calfs/list');
+    }
+
 
     public function deadList(){
 
@@ -327,7 +336,7 @@ class CowCalfController extends Controller
         $request_data['deleted_at'] = date('Y-m-d H:i:s');
 
         $this->calfRepository->createOrUpdateDeadCow($request_data, $id);
-        Session::flash('message_success', 'Delete Dead Cow');
+        Session::flash('message_success', 'Dead Calf Deleted');
         return redirect('calfs/dead-list');
     }
 
@@ -361,7 +370,7 @@ class CowCalfController extends Controller
         $request_data['deleted_at'] = date('Y-m-d H:i:s');
 
         $this->calfRepository->createOrUpdateSoldCow($request_data, $id);
-        Session::flash('message_success', 'Delete Sold Calf');
+        Session::flash('message_success', 'Sold Calf Deleted');
         return redirect('calfs/sold-list');
     }
 
