@@ -53,7 +53,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Dam</label>
-                                        <input type="text" class="form-control" placeholder="Cause of Death"
+                                        <input type="text" class="form-control" placeholder="Dam"
                                             name="dam" value="{{ old('dam') }}">
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Dam Code</label>
-                                        <input type="text" class="form-control" placeholder="Cause of Death"
+                                        <input type="text" class="form-control" placeholder="Dam Code"
                                             name="dam_code" value="{{ old('dam_code') }}">
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Dam Father</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Dam Father"
                                             name="dam_father" value="{{ old('dam_father') }}">
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Dam Father Code</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Dam Father Code"
                                             name="dam_father_code" value="{{ old('dam_father_code') }}">
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Dam Mother</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Dam Mother"
                                             name="dam_mother" value="{{ old('dam_mother') }}">
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Dam Mother Code</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Dam Mother Code"
                                             name="dam_mother_code" value="{{ old('dam_mother_code') }}">
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Sire</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Sire"
                                             name="sire" value="{{ old('sire') }}">
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Sire Code</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Sire Code"
                                             name="sire_code" value="{{ old('sire_code') }}">
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Sire Father</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Sire Father"
                                             name="sire_father" value="{{ old('sire_father') }}">
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Sire Father Code</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Sire Father Code"
                                             name="sire_father_code" value="{{ old('sire_father_code') }}">
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Sire Mother</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Sire Mother"
                                             name="sire_mother" value="{{ old('sire_mother') }}">
                                     </div>
                                 </div>
@@ -153,7 +153,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Sire Mother Code</label>
-                                        <input type="text" class="form-control" placeholder="Carcass Amount"
+                                        <input type="text" class="form-control" placeholder="Sire Mother Code"
                                             name="sire_mother_code" value="{{ old('sire_mother_code') }}">
                                     </div>
                                 </div>
