@@ -4,10 +4,10 @@
     <!-- Content Header (Page header) -->
     @php
         $breadcrumb = '<li class="breadcrumb-item"><a href="">Dashboard</a></li>';
-        $breadcrumb .= '<li class="breadcrumb-item"><a href="">Add cow genetic record</a></li>';
+        $breadcrumb .= '<li class="breadcrumb-item"><a href="">Add Calf Genetic Record</a></li>';
         $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
     @endphp
-    <x-backend-breadcrumb title="Add cow genetic record" breadcrumb="{{ $breadcrumb }}" />
+    <x-backend-breadcrumb title="Add Calf Genetic Record" breadcrumb="{{ $breadcrumb }}" />
     <!-- /.content-header -->
 
     <!-- Main content -->
