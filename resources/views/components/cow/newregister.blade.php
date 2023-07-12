@@ -67,7 +67,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Date of Birth:</label>
-                                        <input type="date" id="birth_date" class="form-control" placeholder="Date of Birth" name="date_of_birth" value="{{ old('date_of_birth') }}">
+                                        <input type="date" id="birth_date" class="form-control" placeholder="Date of Birth" name="date_of_birth" value="{{ old('date_of_birth') }}" max="{{ date('Y-m-d') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -95,11 +95,7 @@
 
 @section('scripts')
     <!-- <script src="{{ asset('assets/dist/js/vet.js') }}"></script> -->
-    <script type="text/javascript">
-        $(function() {
-            $( "#birth_date" ).datepicker({  maxDate: new Date() });
-        });
-    </script>
+
     <script>
           </script>
 @endsection
