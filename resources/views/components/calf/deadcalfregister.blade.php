@@ -33,9 +33,9 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Cows Name</label>
+                                        <label>Calf Name</label>
                                         {!! Form::select('cow_id', $cow, null, [
-                                            'placeholder' => 'Cows Name',
+                                            'placeholder' => 'Calf Name',
                                             'class' => 'form-control',
                                             'id' => 'breed',
                                         ]) !!}
