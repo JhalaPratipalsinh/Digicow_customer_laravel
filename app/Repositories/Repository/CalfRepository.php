@@ -133,7 +133,6 @@ class CalfRepository implements CalfRepositoryInterface
 
         if (!empty($where)) {
             $dedcow->where('mobile_number', $where['mobile_number']);
-            $dedcow->where('cow_category', 'calf');
         }
 
         if ($searchValue) {
@@ -141,7 +140,7 @@ class CalfRepository implements CalfRepositoryInterface
             $dedcow->where('cow_fname', 'like', '%' . $searchValue . '%');
             $dedcow->orWhere('cow_sname', 'like', '%' . $searchValue . '%');
         }
-
+        $dedcow->where('cow_category', 'calf');
         $dedcow->where('deleted_at', '=', NULL);
         $clone_cow = clone $dedcow;
         $totalRecords = $clone_cow->count();
@@ -177,11 +176,8 @@ class CalfRepository implements CalfRepositoryInterface
 
         if (!empty($where)) {
             $soldcow->where('phone_number', $where['mobile_number']);
-            $soldcow->where('cow_category', 'calf');
         }
-
-
-
+        $soldcow->where('cow_category', '=', 'calf');
         $soldcow->where('deleted_at', '=', NULL);
         $clone_cow = clone $soldcow;
         $totalRecords = $clone_cow->count();

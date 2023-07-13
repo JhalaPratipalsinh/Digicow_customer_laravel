@@ -144,7 +144,7 @@ class CowRepository implements CowRepositoryInterface
             $dedcow->where('cow_fname', 'like', '%' . $searchValue . '%');
             $dedcow->orWhere('cow_sname', 'like', '%' . $searchValue . '%');
         }
-
+        $dedcow->where('cow_category', '=', 'cow');
         $dedcow->where('deleted_at', '=', NULL);
         $clone_cow = clone $dedcow;
         $totalRecords = $clone_cow->count();
@@ -181,9 +181,7 @@ class CowRepository implements CowRepositoryInterface
         if (!empty($where)) {
             $soldcow->where('phone_number', $where['mobile_number']) ;
         }
-
-
-
+        $soldcow->where('cow_category', '=', 'cow');
         $soldcow->where('deleted_at', '=', NULL);
         $clone_cow = clone $soldcow;
         $totalRecords = $clone_cow->count();
