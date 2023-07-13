@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <!--div class="col-md-4">
                                     <div class="form-group">
                                         <label>Select Cow Group</label>
                                         {!! Form::select('group_id', $group, null, [
@@ -58,8 +58,7 @@
                                             'id' => 'group',
                                         ]) !!}
                                     </div>
-                                </div>
-
+                                </div-->
 
                             </div>
 
