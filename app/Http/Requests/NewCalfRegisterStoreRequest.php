@@ -28,9 +28,6 @@ class NewCalfRegisterStoreRequest extends FormRequest
             'calf_name' => [
                 'required',
             ],
-            'group_id' => [
-                'required'
-            ],
             // 'mobile_number' => [
             //     'required',
             // ],
