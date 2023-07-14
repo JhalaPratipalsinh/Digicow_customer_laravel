@@ -122,12 +122,12 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <!--li class="nav-item">
                         <a href="{{ url('cow/deleted-list') }}" class="nav-link {{ $current_route == 'deleted-list' ? 'active' : null }} ">
                             <i class="far fa-circle nav-icon"></i>
                             <p> View Deleted </p>
                         </a>
-                    </li>
+                    </!--li-->
 
                 </ul>
             </li>
@@ -190,12 +190,12 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <!--li class="nav-item">
                         <a href="{{ url('calfs/deleted-list') }}" class="nav-link {{ $current_route == 'deleted-list' ? 'active' : null }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p> View Deleted </p>
                         </a>
-                    </li>
+                    </!--li-->
 
                 </ul>
             </li>
