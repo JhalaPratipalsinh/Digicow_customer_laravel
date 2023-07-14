@@ -46,6 +46,52 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label>Date of AI:</label>
+                                    <input type="date" class="form-control" placeholder="Date of AI" name="date" value="{{ old('date') }}" max="{{ date('Y-m-d') }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Select Straw Breed</label>
+                                    {!! Form::select('straw_breed',  $breed, null, [
+                                        'placeholder' => 'Select Breed',
+                                        'class' => 'form-control',
+                                        'id' => 'breed_select',
+                                    ]) !!}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="cross_breed" style="display: {{ old('breed_id') == 13 ? 'block' : 'none' }}">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Select Breed 1</label>
+                                    {!! Form::select('breed1',  $breed, null, [
+                                        'placeholder' => 'Select Breed 1',
+                                        'class' => 'form-control',
+                                        'id' => 'breed1',
+                                    ]) !!}
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Select Breed 2</label>
+                                    {!! Form::select('breed2',  $breed, null, [
+                                        'placeholder' => 'Select Breed 2',
+                                        'class' => 'form-control',
+                                        'id' => 'breed2',
+                                    ]) !!}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <label>Bull Name</label>
                                     <input type="text" class="form-control" placeholder="Bull Name" name="bull_name" value="{{ old('bull_name') }}">
                                 </div>
@@ -73,8 +119,8 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Date of AI:</label>
-                                    <input type="date" class="form-control" placeholder="Date of AI" name="date" value="{{ old('date') }}">
+                                    <label>Enter No. Straw</label>
+                                    <input type="text" class="form-control" placeholder="Enter No. Straw" name="no_straw" value="{{ old('no_straw') }}">
                                 </div>
                             </div>
                         </div>
@@ -98,5 +144,23 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
 @section('scripts')
 <!-- <script src="{{ asset('assets/dist/js/vet.js') }}"></script> -->
 
-<script></script>
+<script>
+    // Function to show/hide the cross_breed div based on the breed selection
+    function toggleCrossBreedDiv() {
+        var breedValue = document.getElementById('breed_select').value;
+        var crossBreedDiv = document.getElementById('cross_breed');
+
+        if (breedValue == 13) {
+            crossBreedDiv.style.display = 'block';
+        } else {
+            crossBreedDiv.style.display = 'none';
+        }
+    }
+
+    // Call the toggleCrossBreedDiv function on page load
+    toggleCrossBreedDiv();
+
+    // Add an event listener to the breed select element
+    document.getElementById('breed_select').addEventListener('change', toggleCrossBreedDiv);
+</script>
 @endsection

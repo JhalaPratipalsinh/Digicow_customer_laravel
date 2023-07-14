@@ -50,7 +50,7 @@
                                 </div>
                             </div>
 
-                            <div class="row" id="cross_breed" style="display: {{ old('breed_id') == 14 ? 'block' : 'none' }}">
+                            <div class="row" id="cross_breed" style="display: {{ old('breed_id') == 13 ? 'block' : 'none' }}">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Select Breed 1</label>
