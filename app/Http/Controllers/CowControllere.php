@@ -101,6 +101,10 @@ class CowControllere extends Controller
                 'created_at' => date('Y-m-d H:i:s'),
                 'sync_at' => date('Y-m-d H:i:s'),
             ];
+            if($request->breed_id == 13){
+                $data['cow_breeding_1'] = $request->cow_breeding_1;
+                $data['cow_breeding_2'] = $request->cow_breeding_2;
+            }
 
             $result = $this->cowRepository->createOrUpdate($data);
 

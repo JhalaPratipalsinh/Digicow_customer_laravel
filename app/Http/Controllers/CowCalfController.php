@@ -114,6 +114,10 @@ class CowCalfController extends Controller
                 'sync_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
+            if($request->breed_id == 13){
+                $data['cow_breeding_1'] = $request->cow_breeding_1;
+                $data['cow_breeding_2'] = $request->cow_breeding_2;
+            }
 
             $result = $this->calfRepository->createOrUpdate($data);
 

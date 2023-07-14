@@ -35,26 +35,12 @@ $('#cow-list').DataTable({
         },
         targets: 3,
     },
-    {
-        render: function (data, type, row) {
-            var str = row.date_of_birth;
-            var arr = str.split('/');
 
-            var sdate = arr[2]+"-"+arr[1]+"-"+arr[0];
-
-            var dateObject = new Date(row.date_of_birth);
-            //console.log(dateObject);
-
-            //$date = explode("/",$row['date_of_birth']);
-            return '';
-        },
-        targets: 4,
-    },
     {
         render: function (data, type, row) {
             return row.calving_lactation;
         },
-        targets: 5,
+        targets: 4,
     },
     {
         render: function (data, type, row) {
@@ -73,7 +59,7 @@ $('#cow-list').DataTable({
             }
             return status ? status : '' ;
         },
-        targets: 6,
+        targets: 5,
     },
     {
         render: function (data, type, row) {
@@ -92,7 +78,7 @@ $('#cow-list').DataTable({
             `;
             return action;
         },
-        targets: 7,
+        targets: 6,
     }
     ],
 });

@@ -48,7 +48,33 @@
                                         ]) !!}
                                     </div>
                                 </div>
+                            </div>
 
+                            <div class="row" id="cross_breed" style="display: {{ old('breed_id') == 14 ? 'block' : 'none' }}">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Select Breed 1</label>
+                                        {!! Form::select('cow_breeding_1',  $breed, null, [
+                                            'placeholder' => 'Select Breed 1',
+                                            'class' => 'form-control',
+                                            'id' => 'breed1',
+                                        ]) !!}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Select Breed 2</label>
+                                        {!! Form::select('cow_breeding_2',  $breed, null, [
+                                            'placeholder' => 'Select Breed 2',
+                                            'class' => 'form-control',
+                                            'id' => 'breed2',
+                                        ]) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Select Cow Group</label>
@@ -60,10 +86,6 @@
                                     </div>
                                 </div>
 
-
-                            </div>
-
-                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Date of Birth:</label>
@@ -97,5 +119,22 @@
     <!-- <script src="{{ asset('assets/dist/js/vet.js') }}"></script> -->
 
     <script>
-          </script>
+        // Function to show/hide the cross_breed div based on the breed selection
+        function toggleCrossBreedDiv() {
+            var breedValue = document.getElementById('breed').value;
+            var crossBreedDiv = document.getElementById('cross_breed');
+
+            if (breedValue == 13) {
+                crossBreedDiv.style.display = 'block';
+            } else {
+                crossBreedDiv.style.display = 'none';
+            }
+        }
+
+        // Call the toggleCrossBreedDiv function on page load
+        toggleCrossBreedDiv();
+
+        // Add an event listener to the breed select element
+        document.getElementById('breed').addEventListener('change', toggleCrossBreedDiv);
+    </script>
 @endsection

@@ -35,7 +35,6 @@ $breadcrumb .= '<li class="breadcrumb-item active">Cows List</li>';
                                     <th>Breed</th>
                                     <th>Cow Group</th>
                                     <th>Date of Birth</th>
-                                    <th>Age</th>
                                     <th>No. of Calving/Latation</th>
                                     <th>Status</th>
                                     <th>Action</th>
