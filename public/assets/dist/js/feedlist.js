@@ -1,15 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
 $('#feed-list').DataTable({
     'processing': true,
     'serverSide': true,

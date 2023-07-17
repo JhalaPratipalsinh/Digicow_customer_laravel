@@ -1,7 +1,6 @@
 $('#farmer-coop-list').DataTable({
     'processing': true,
     'serverSide': true,
-    'dom': 'lrtip',
     'serverMethod': 'post',
     "ajax": {
         type: "POST",

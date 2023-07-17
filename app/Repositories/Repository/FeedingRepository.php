@@ -62,6 +62,22 @@ class FeedingRepository implements FeedingRepositoryInterface
         //     $dead_cow->where('cow_name', 'like', '%' . $searchValue . '%');
         // }
         $feeding->where('deleted_at', '=', NULL);
+
+        if ($searchValue) {
+            $feeding->where(function($data) use ($searchValue){
+
+                $data->where('feed', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('category', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('quantity', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('total', 'like', '%' . $searchValue . '%');
+
+            });
+        }
+
+
         $clone_dead_cow = clone $feeding;
         $totalRecords = $clone_dead_cow->count();
 

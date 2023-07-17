@@ -89,16 +89,35 @@ class CalfRepository implements CalfRepositoryInterface
             $cow->with($with);
         }
 
-        if ($searchValue) {
-
-            $cow->where('cow_fname', 'like', '%' . $searchValue . '%');
-            $cow->orWhere('cow_sname', 'like', '%' . $searchValue . '%');
-        }
-
         if (!empty($where)) {
             $cow->where('mobile_number', $where['mobile_number']);
         }
+
         $cow->where('deleted_at', '=', NULL);
+
+        if ($searchValue) {
+
+            $cow->where(function($data) use ($searchValue){
+
+                $data->where('calf_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('sex', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('d_o_b', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('calf_weight', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('status', 'like', '%' . $searchValue . '%');
+
+                $data->orWhereHas('breed', function ($breed) use ($searchValue) {
+                    $breed->where('name', 'like', '%' . $searchValue . '%');
+                });
+
+            });
+    
+           
+        }
+
         $clone_cow = clone $cow;
         $totalRecords = $clone_cow->count();
 
@@ -135,13 +154,23 @@ class CalfRepository implements CalfRepositoryInterface
             $dedcow->where('mobile_number', $where['mobile_number']);
         }
 
-        if ($searchValue) {
-
-            $dedcow->where('cow_fname', 'like', '%' . $searchValue . '%');
-            $dedcow->orWhere('cow_sname', 'like', '%' . $searchValue . '%');
-        }
         $dedcow->where('cow_category', 'calf');
         $dedcow->where('deleted_at', '=', NULL);
+
+        if ($searchValue) {
+            $dedcow->where(function($data) use ($searchValue){
+
+                $data->where('cow_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('cause_of_death', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('death_date', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('carcass_amount', 'like', '%' . $searchValue . '%');
+
+            });
+        }
+
         $clone_cow = clone $dedcow;
         $totalRecords = $clone_cow->count();
 
@@ -179,6 +208,21 @@ class CalfRepository implements CalfRepositoryInterface
         }
         $soldcow->where('cow_category', '=', 'calf');
         $soldcow->where('deleted_at', '=', NULL);
+
+        if ($searchValue) {
+            $soldcow->where(function($data) use ($searchValue){
+
+                $data->where('cow_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('buyer_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('amount', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('sales_date', 'like', '%' . $searchValue . '%');
+
+            });
+        }
+
         $clone_cow = clone $soldcow;
         $totalRecords = $clone_cow->count();
 

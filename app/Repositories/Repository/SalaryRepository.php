@@ -45,6 +45,20 @@ class SalaryRepository implements SalaryRepositoryInterface
             $salary->take($rawperpage)->skip($start);
         }
 
+        if ($searchValue) {
+            $salary->where(function($data) use ($searchValue){
+
+                $data->where('name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('staff_mobile_number', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('amount', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('date', 'like', '%' . $searchValue . '%');
+
+            });
+        }
+
         $totalRecords = $salary->count();
 
         $result = $salary->get(['salary.*', 'staff.name', 'staff.staff_mobile_number'])->sortByDesc("salary.id");

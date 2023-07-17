@@ -87,6 +87,7 @@ class CowRepository implements CowRepositoryInterface
      */
     public function getAll(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null, array $where) : array
     {
+       // dd($searchValue);
         $cow = Cow::where('id', '<>', null);
 
         if (!empty($with)) {
@@ -95,8 +96,21 @@ class CowRepository implements CowRepositoryInterface
 
         if ($searchValue) {
 
-            $cow->where('cow_fname', 'like', '%' . $searchValue . '%');
-            $cow->orWhere('cow_sname', 'like', '%' . $searchValue . '%');
+            $cow->where('date_of_birth', 'like', '%' . $searchValue . '%');
+            $cow->orWhere('title', 'like', '%' . $searchValue . '%');
+            $cow->orWhere('status', 'like', '%' . $searchValue . '%');
+
+            $cow->orWhereHas('breed', function ($breed) use ($searchValue) {
+
+                $breed->where('name', 'like', '%' . $searchValue . '%');
+
+            });
+
+            $cow->orWhereHas('group', function ($group) use ($searchValue) {
+
+                $group->where('name', 'like', '%' . $searchValue . '%');
+
+            });
         }
 
         if (!empty($where)) {
@@ -135,25 +149,37 @@ class CowRepository implements CowRepositoryInterface
             $dedcow->with($with);
         }
 
-        if (!empty($where)) {
+        if (isset($where)) {
             $dedcow->where('mobile_number', $where['mobile_number']) ;
         }
 
-        if ($searchValue) {
-
-            $dedcow->where('cow_fname', 'like', '%' . $searchValue . '%');
-            $dedcow->orWhere('cow_sname', 'like', '%' . $searchValue . '%');
-        }
         $dedcow->where('cow_category', '=', 'cow');
         $dedcow->where('deleted_at', '=', NULL);
+
+        if ($searchValue) {
+            $dedcow->where(function($data) use ($searchValue){
+
+                $data->where('cow_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('cause_of_death', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('death_date', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('carcass_amount', 'like', '%' . $searchValue . '%');
+
+            });
+        }
+
+    
+        
         $clone_cow = clone $dedcow;
         $totalRecords = $clone_cow->count();
 
         if ($rawperpage) {
             $dedcow->take($rawperpage)->skip($start);
         }
-
         $result = $dedcow->get();
+
 
         return ['total' => $totalRecords, 'data' => $result];
     }
@@ -183,6 +209,22 @@ class CowRepository implements CowRepositoryInterface
         }
         $soldcow->where('cow_category', '=', 'cow');
         $soldcow->where('deleted_at', '=', NULL);
+
+        if ($searchValue) {
+            $soldcow->where(function($data) use ($searchValue){
+
+                $data->where('cow_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('buyer_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('amount', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('sales_date', 'like', '%' . $searchValue . '%');
+
+            });
+        }
+
+
         $clone_cow = clone $soldcow;
         $totalRecords = $clone_cow->count();
 

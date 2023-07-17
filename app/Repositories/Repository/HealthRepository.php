@@ -85,6 +85,20 @@ class HealthRepository implements HealthRepositoryInterface
             }
         }
 
+        if ($searchValue) {
+
+            $health->where(function($data) use ($searchValue){
+
+                $data->where('cow_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('diagnosis', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('cost', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('treatment_date', 'like', '%' . $searchValue . '%');
+            });
+        }
+
         $clone_health = clone $health;
         $totalRecords = $clone_health->count();
 

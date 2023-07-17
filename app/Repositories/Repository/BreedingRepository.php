@@ -61,7 +61,29 @@ class BreedingRepository implements BreedingRepositoryInterface
         }
 
         if ($searchValue) {
-            $breeding->where('farmer_name', 'like', '%' . $searchValue . '%');
+            $breeding->where(function($data) use ($searchValue){
+
+                $data->where('cow_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('bull_name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('bull_code', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('cost', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('date_dt', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('pregnancy_date', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('expected_repeat_date', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('drying_date', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('strimingup_date', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('expected_date_of_birth', 'like', '%' . $searchValue . '%');
+
+            });
         }
 
         $clone_breeding = clone $breeding;

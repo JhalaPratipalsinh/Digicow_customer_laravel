@@ -48,11 +48,23 @@ class FarmerClientsRepository implements FarmerClientsRepositoryInterface
                 $clients_farmer->where('user_type', '=', $filter['user_type']);
             }
         }
-
-        // if ($searchValue) {
-        //     $dead_cow->where('cow_name', 'like', '%' . $searchValue . '%');
-        // }
         $clients_farmer->where('deleted_at', '=', NULL);
+
+
+        if ($searchValue) {
+            $clients_farmer->where(function($data) use ($searchValue){
+
+                $data->where('name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('client_mobile', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('location', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('status', 'like', '%' . $searchValue . '%');
+
+            });
+        }
+
         $clone_dead_cow = clone $clients_farmer;
         $totalRecords = $clone_dead_cow->count();
 

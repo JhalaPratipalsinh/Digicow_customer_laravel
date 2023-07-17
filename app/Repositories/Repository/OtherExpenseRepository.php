@@ -40,6 +40,19 @@ class OtherExpenseRepository implements OtherExpenseRepositoryInterface
 
         $other_expense->where('deleted_at', '=', NULL);
 
+
+        if ($searchValue) {
+            $other_expense->where(function($data) use ($searchValue){
+
+                $data->where('name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('amount', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('date_selected', 'like', '%' . $searchValue . '%');
+
+            });
+        }
+
         if ($rawperpage) {
             $other_expense->take($rawperpage)->skip($start);
         }

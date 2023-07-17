@@ -40,6 +40,18 @@ class OtherIncomeRepository implements OtherIncomeRepositoryInterface
 
         $other_income->where('deleted_at', '=', NULL);
 
+        if ($searchValue) {
+            $other_income->where(function($data) use ($searchValue){
+
+                $data->where('name', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('amount', 'like', '%' . $searchValue . '%');
+
+                $data->orWhere('date_selected', 'like', '%' . $searchValue . '%');
+
+            });
+        }
+
         if ($rawperpage) {
             $other_income->take($rawperpage)->skip($start);
         }
