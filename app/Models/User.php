@@ -17,10 +17,38 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public $table = "users";
     protected $fillable = [
-        'name',
+        'user_id',
+        'first_name',
+        'mobile_number',
+        'pin',
+        'id_number',
+        'gcm_id',
+        'created_at',
+        'updated_at',
+        'sync_at',
         'email',
-        'password',
+        'status',
+        'activation_code',
+        'user_type',
+        'parent',
+        'parent',
+        'package',
+        'package_date',
+        'trail_used_flag',
+        'from_source',
+        'address',
+        'county',
+        'subcounty',
+        'ward',
+        'rapidvet',
+        'has_user_group_training',
+        'trainer_approved',
+        'age',
+        'gender',
+        'terms_conditions'
     ];
 
     /**

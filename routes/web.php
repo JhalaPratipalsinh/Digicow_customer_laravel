@@ -103,6 +103,14 @@ Route::group(['middleware' => UserMiddleware::class], function () {
     });
 
 
+    Route::prefix('record-milk-production-store')->group(function () {
+        Route::get('all-milk-production', [RecordMilkProductionController::class, 'allMilkProduction']);
+        Route::post('all-milk-store', [RecordMilkProductionController::class, 'allMilkStore']);
+
+        Route::get('whole-day', [RecordMilkProductionController::class, 'wholeDay']);
+        Route::post('whole-day-store', [RecordMilkProductionController::class, 'wholeDayStore']);
+    });
+
 
     Route::prefix('record-milk-production')->group(function () {
         Route::get('list', [RecordMilkProductionController::class, 'recordMilkProduction']);

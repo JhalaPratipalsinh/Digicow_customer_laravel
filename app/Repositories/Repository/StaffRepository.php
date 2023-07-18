@@ -47,6 +47,10 @@ class StaffRepository implements StaffRepositoryInterface
                 $staff->where('mobile_number', '=', $filter['mobile_number']);
             }
 
+            if (isset($filter['staff_mobile_number'])) {
+                $staff->where('staff_mobile_number', '=', $filter['staff_mobile_number']);
+            }
+
             if (isset($filter['status'])) {
                 $staff->where('status', '=', $filter['status']);
             }

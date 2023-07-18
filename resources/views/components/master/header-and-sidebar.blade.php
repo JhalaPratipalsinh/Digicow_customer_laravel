@@ -204,12 +204,39 @@
             {{-- <x-backend-navigation menu-title="Record Milk Production" fa-class="far fa-circle nav-icon"
                     routes="{{ url('record-milk-production/list') }}" active-route='list' /> --}}
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{ url('record-milk-production/list') }}" class="nav-link  {{ $current_route == 'list' ? 'active' : null }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Record Milk Production</p>
                 </a>
+            </li> --}}
+
+
+            <li class="nav-item {{ $current_route_one == 'record-milk-production-store' ? 'menu-is-opening menu-open' : null }}">
+                <a href="#" class="nav-link {{ $current_route_one == 'record-milk-production-store' ? 'active' : null }}">
+                    <i class="nav-icon fas fa-chart-pie"></i>
+                    <p>
+                        Record Milk Production
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview" style="display: {{ $current_route_one == 'record-milk-production-store' ? 'block' : 'none' }};">
+                    <li class="nav-item">
+                        <a href="{{ url('record-milk-production-store/all-milk-production') }}" class="nav-link  {{ $current_route == 'all-milk-production' ? 'active' : null }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Milking Time</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url('record-milk-production-store/whole-day') }}" class="nav-link  {{ $current_route == 'whole-day' ? 'active' : null }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Whole Day</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
+
 
             <li class="nav-item {{ $current_route_one == 'record-milk-production' ? 'menu-is-opening menu-open' : null }}">
                 <a href="#" class="nav-link {{ $current_route_one == 'record-milk-production' ? 'active' : null }}">

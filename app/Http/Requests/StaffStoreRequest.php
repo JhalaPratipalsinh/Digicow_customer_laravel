@@ -22,18 +22,19 @@ class StaffStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'name' => [
-            'required',
-           ],
-           'staff_mobile_number' => [
-            'required',
-           ],
-           'id_number' => [
-            'required',
-           ],
-           'location' => [
-            'required'
-           ]
+            'name' => [
+                'required',
+            ],
+            'staff_mobile_number' => [
+                'required',
+            ],
+            'pin' =>
+            [
+                'required',
+            ],
+            'confirm_pin' => [
+                'required', 'same:pin'
+            ],
         ];
     }
 }

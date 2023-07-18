@@ -17,6 +17,7 @@ use App\Repositories\Interfaces\SalaryRepositoryInterface;
 use App\Repositories\Interfaces\StaffRepositoryInterface;
 use App\Repositories\Interfaces\OtherIncomeRepositoryInterface;
 use App\Repositories\Interfaces\OtherExpenseRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\Repository\BreedingRepository;
 use App\Repositories\Repository\CalfRepository;
 use App\Repositories\Repository\CowBreedRepository;
@@ -32,6 +33,7 @@ use App\Repositories\Repository\SalaryRepository;
 use App\Repositories\Repository\StaffRepository;
 use App\Repositories\Repository\OtherIncomeRepository;
 use App\Repositories\Repository\OtherExpenseRepository;
+use App\Repositories\Repository\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -125,6 +127,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             OtherExpenseRepositoryInterface::class,
             OtherExpenseRepository::class
+        );
+
+        $this->app->bind(
+            UserRepositoryInterface::class,
+            UserRepository::class
         );
     }
 

@@ -48,7 +48,26 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             </div>
                         </div>
 
+
                         <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Enter New PIN</label>
+                                    <input type="text" class="form-control" placeholder="Enter New PIN" name="pin" value="{{ old('pin') }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Confirm PIN</label>
+                                    <input type="text" class="form-control" placeholder="Confirm PIN" name="confirm_pin" value="{{ old('confirm_pin') }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Staff ID</label>
@@ -64,7 +83,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                                     <input type="text" class="form-control" placeholder="Farm's Location" name="location" value="{{ old('location') }}">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <br>
 
                         <div>

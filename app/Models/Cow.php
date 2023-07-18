@@ -27,4 +27,10 @@ class Cow extends Model
     {
         return $this->belongsTo(CowGroup::class, 'group_id', 'id');
     }
+
+
+    public function getFullnameAttribute()
+    {
+        return $this->title.'|'.$this->id;    
+    }
 }

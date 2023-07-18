@@ -13,16 +13,21 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Http\Resources\DataTableRS;
 use App\Models\Staff;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 
 class StaffController extends Controller
 {
 
     protected $staffRepository;
 
+    protected $userRepository;
+
     public function __construct(
-        StaffRepositoryInterface $staffRepository
+        StaffRepositoryInterface $staffRepository,
+        UserRepositoryInterface $userRepository
     ) {
         $this->staffRepository = $staffRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function staffCreate()
@@ -35,24 +40,42 @@ class StaffController extends Controller
     public function staffStore(StaffStoreRequest $request)
     {
         try {
-
             $mobile = Auth::guard('web')->user()['mobile_number'];
-            $request_data = [
-                'id_number'  => $request->id_number,
-                'location'   => $request->location,
-                'name' => $request->name,
+
+            $where = [
+                'mobile_number' =>  Auth::guard('web')->user()['mobile_number'],
                 'staff_mobile_number' => $request->staff_mobile_number,
-                'mobile_number' => $mobile,
-                'status' => 'active',
-                //'insert_from' => 'web',
-                //'sync_at' => date('Y-m-d H:i:s'),
+            ];
+
+            $staff = $this->staffRepository->getAll([], null, null, null, null, null, $where)['data'];
+
+            if(empty($staff[0])){
+                $request_data = [
+                    'name' => $request->name,
+                    'staff_mobile_number' => $request->staff_mobile_number,
+                    'mobile_number' => $mobile,
+                    'status' => 'active',
+                    'updated_at' => date('Y-m-d H:i:s'),
+                    'created_at' => date('Y-m-d H:i:s')
+                ];
+                $this->staffRepository->createOrUpdate($request_data);
+            }
+
+
+            $request_data = [
+                'first_name' => $request->name,
+                'mobile_number' => $request->staff_mobile_number,
+                'pin' => $request->pin,
+                'user_type' => 'FARM_HAND',
                 'updated_at' => date('Y-m-d H:i:s'),
                 'created_at' => date('Y-m-d H:i:s')
             ];
 
-            $this->staffRepository->createOrUpdate($request_data);
+            $this->userRepository->createOrUpdate($request_data);
+
             Session::flash('message_success', 'Stored Staff');
             return redirect('staff/create-staff');
+
         } catch (Exception $ex) {
             DB::rollBack();
             dd($ex);
