@@ -97,7 +97,7 @@ class CowControllere extends Controller
                 'calving_lactation' => $request->calving_lactation,
                 'mobile_number' => $mobile_number,
                 'status' => 'active',
-                'insert_from' => 'web',
+               // 'insert_from' => 'web',
                 'created_at' => date('Y-m-d H:i:s'),
                 'sync_at' => date('Y-m-d H:i:s'),
             ];

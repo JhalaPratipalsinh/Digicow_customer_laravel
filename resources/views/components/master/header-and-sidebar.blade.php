@@ -400,12 +400,12 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ url('milk-sale-report/coop-list') }}" class="nav-link  {{ $current_route == 'coop-list' ? 'active' : null }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Per Customer</p>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 

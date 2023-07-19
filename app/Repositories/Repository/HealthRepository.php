@@ -205,6 +205,7 @@ class HealthRepository implements HealthRepositoryInterface
         $milk_production->orderByDesc('cost');
         $milk_production->limit(1);
         $result = $milk_production->get();
-        return $result[0]['cow_name'];
+        $final = !empty($result[0]['cow_name']) ? $result[0]['cow_name'] : '-';
+        return  $final;
     }
 }

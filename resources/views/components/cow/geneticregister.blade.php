@@ -45,7 +45,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cow code / Ear tag number</label>
-                                        <input type="text" class="form-control" placeholder="Select Date" name="ear_code"
+                                        <input type="text" class="form-control" placeholder="cow code" name="ear_code"
                                             value="{{ old('ear_code') }}">
                                     </div>
                                 </div>

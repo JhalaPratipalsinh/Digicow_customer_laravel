@@ -207,6 +207,7 @@ class BreedingRepository implements BreedingRepositoryInterface
         $breeding->orderByDesc('repeats');
         $breeding->limit(1);
         $result = $breeding->get();
-        return $result[0]['cow_name'];
+        $final = !empty($result[0]['cow_name']) ? $result[0]['cow_name'] : '-';
+        return $final;
     }
 }

@@ -16,7 +16,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>{{ $highest_milk_producer; }}</h3>
+                            <h3>{{ $highest_milk_producer }}</h3>
                             <p>Highest Milk Producer</p>
                         </div>
                         <div class="icon">
@@ -74,7 +74,7 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3>
-                                {{ $lowest_milk_producer; }}
+                                {{ $lowest_milk_producer }}
                             </h3>
                             <p>
                                 Lowest Milk Producer

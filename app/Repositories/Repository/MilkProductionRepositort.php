@@ -117,7 +117,8 @@ class MilkProductionRepositort implements MilkProductionRepositortInterface
         $milk_production->orderByDesc('milk_quantity');
         $milk_production->limit(1);
         $result = $milk_production->get();
-        return $result[0]['cow'];
+        $final = !empty($result[0]['cow']) ? $result[0]['cow'] : '-' ;
+        return $final;
     }
 
     public function getLowestmilkProducer(array $where = [])
@@ -127,7 +128,8 @@ class MilkProductionRepositort implements MilkProductionRepositortInterface
         $milk_production->orderBy('milk_quantity','asc');
         $milk_production->limit(1);
         $result = $milk_production->get();
-        return $result[0]['cow'];
+        $final = !empty($result[0]['cow']) ? $result[0]['cow'] : '-';
+        return $final;
     }
 
     public function getTotalProductionofToday(array $where = [])

@@ -180,6 +180,7 @@ class FarmerClientsController extends Controller
 
     public function coopList()
     {
+        dd('abc');
         return view('components.clientFarmer.coop_list');
     }
 
