@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <label>Select Date:</label>
                                         <input type="date" class="form-control" placeholder="Select Date"
-                                        name="date_selected" value="{{ old('date_selected') }}">
+                                        name="date_selected" value="{{ old('date_selected') }}" required>
 
                                     </div>
                                 </div>
@@ -43,8 +43,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Select Feed:</label>
-                                        <select class="form-control" required="" name="feed">
-                                            <option value="0" selected="" disabled="">--select--</option>
+                                        <select class="form-control" required name="feed">
+                                            <option value="" selected="" disabled="">--select--</option>
                                             <option value="Maize germ">Maize Germ</option>
                                             <option value="Wheat bran">Wheat Bran</option>
                                             <option value="Poland">Poland</option>
@@ -58,7 +58,7 @@
                                     <div class="form-group">
                                         <label>Quantity in KGs</label>
                                         <input type="text" class="form-control" placeholder="Quantity"
-                                            name="quantity" value="{{ old('quantity') }}">
+                                            name="quantity" value="{{ old('quantity') }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                     <div class="form-group">
                                         <label>Total cost of Concentrates</label>
                                         <input type="text" class="form-control" placeholder="Total" name="total"
-                                            value="{{ old('total') }}">
+                                            value="{{ old('total') }}" required>
                                     </div>
                                 </div>
                             </div>
