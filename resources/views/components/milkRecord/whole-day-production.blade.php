@@ -52,7 +52,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Whole Day</label>
-                                    <input type="text" class="form-control" placeholder="Whole Day" name="wholeday" value="{{ old('wholeday') }}">
+                                    <input type="text" class="form-control" placeholder="Whole Day" name="wholeday" value="{{ old('wholeday') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -78,6 +78,6 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
 
 <script>
     // Function to show/hide the cross_breed div based on the breed selection
-   
+
 </script>
 @endsection
