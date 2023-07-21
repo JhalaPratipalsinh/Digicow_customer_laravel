@@ -47,7 +47,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Date of AI:</label>
-                                    <input type="date" class="form-control" placeholder="Date of AI" name="date" value="{{ old('date') }}" max="{{ date('Y-m-d') }}">
+                                    <input type="date" class="form-control" placeholder="Date of AI" name="date" value="{{ old('date') }}" max="{{ date('Y-m-d') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Select Straw Breed</label>
+                                    <label>Select Bull Breed</label>
                                     {!! Form::select('straw_breed',  $breed, null, [
                                         'placeholder' => 'Select Breed',
                                         'class' => 'form-control',
@@ -93,7 +93,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Bull Name</label>
-                                    <input type="text" class="form-control" placeholder="Bull Name" name="bull_name" value="{{ old('bull_name') }}">
+                                    <input type="text" class="form-control" placeholder="Bull Name" name="bull_name" value="{{ old('bull_name') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Bull Code</label>
-                                    <input type="text" class="form-control" placeholder="Bull Code" name="bull_code" value="{{ old('bull_code') }}">
+                                    <input type="text" class="form-control" placeholder="Bull Code" name="bull_code" value="{{ old('bull_code') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Cost</label>
-                                    <input type="text" class="form-control" placeholder="Cost" name="cost" value="{{ old('cost') }}">
+                                    <input type="text" class="form-control" placeholder="Cost" name="cost" value="{{ old('cost') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +120,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Enter No. Straw</label>
-                                    <input type="text" class="form-control" placeholder="Enter No. Straw" name="no_straw" value="{{ old('no_straw') }}">
+                                    <input type="text" class="form-control" placeholder="Enter No. Straw" name="no_straw" value="{{ old('no_straw') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -149,11 +149,17 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
     function toggleCrossBreedDiv() {
         var breedValue = document.getElementById('breed_select').value;
         var crossBreedDiv = document.getElementById('cross_breed');
+        var breed1Input = document.getElementById('breed1');
+        var breed2Input = document.getElementById('breed2');
 
         if (breedValue == 13) {
             crossBreedDiv.style.display = 'block';
+            breed1Input.setAttribute('required', 'required'); // Set required attribute
+            breed2Input.setAttribute('required', 'required'); // Set required attribute
         } else {
             crossBreedDiv.style.display = 'none';
+            breed1Input.removeAttribute('required'); // Remove required attribute
+            breed2Input.removeAttribute('required'); // Remove required attribute
         }
     }
 

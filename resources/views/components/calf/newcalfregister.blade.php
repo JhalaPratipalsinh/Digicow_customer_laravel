@@ -34,7 +34,7 @@
                                     <div class="form-group">
                                         <label>Calf Name</label>
                                         <input type="text" class="form-control" placeholder="Calf Name"
-                                            name="calf_name" value="{{ old('calf_name') }}">
+                                            name="calf_name" value="{{ old('calf_name') }}" required>
                                     </div>
                                 </div>
 
@@ -45,6 +45,7 @@
                                             'placeholder' => 'Select Breed',
                                             'class' => 'form-control',
                                             'id' => 'breed',
+                                            'required' => 'required',
                                         ]) !!}
                                     </div>
                                 </div>
@@ -90,8 +91,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Select Sex</label>
-                                        <select class="form-control" name="sex">
-                                            <option value="0"   selected="selected">--select--</option>
+                                        <select class="form-control" name="sex" required>
+                                            <option value=""   selected="selected">--select--</option>
                                             <option value="Bull">Bull</option>
                                             <option value="Heifer">Heifer</option>
                                         </select>
@@ -101,7 +102,7 @@
                                     <div class="form-group"> <span style="color: red;"></span>
                                         <label>Calf Weight</label>
                                         <input type="text" class="form-control" placeholder="Calf Weight"
-                                            name="calf_weight" value="{{ old('calf_weight') }}">
+                                            name="calf_weight" value="{{ old('calf_weight') }}" required>
                                     </div>
                                 </div>
 
@@ -109,7 +110,7 @@
                                     <div class="form-group"> <span style="color: red;"></span>
                                         <label>Date of Birth:</label>
                                         <input type="date" id='birth_date' class="form-control" placeholder="Date of Birth:"
-                                            name="d_o_b" value="{{ old('d_o_b') }}" max="{{ date('Y-m-d') }}">
+                                            name="d_o_b" value="{{ old('d_o_b') }}" max="{{ date('Y-m-d') }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -136,11 +137,17 @@
         function toggleCrossBreedDiv() {
             var breedValue = document.getElementById('breed').value;
             var crossBreedDiv = document.getElementById('cross_breed');
+            var breed1Input = document.getElementById('breed1');
+            var breed2Input = document.getElementById('breed2');
 
             if (breedValue == 13) {
                 crossBreedDiv.style.display = 'block';
+                breed1Input.setAttribute('required', 'required'); // Set required attribute
+                breed2Input.setAttribute('required', 'required'); // Set required attribute
             } else {
                 crossBreedDiv.style.display = 'none';
+                breed1Input.removeAttribute('required'); // Remove required attribute
+                breed2Input.removeAttribute('required'); // Remove required attribute
             }
         }
 

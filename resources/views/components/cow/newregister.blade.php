@@ -34,7 +34,7 @@
                                     <div class="form-group">
                                         <label>Cow Name</label>
                                         <input type="text" class="form-control" placeholder="Cow Name"
-                                            name="title" value="{{ old('title') }}">
+                                            name="title" value="{{ old('title') }}" required>
                                     </div>
                                 </div>
 
@@ -45,6 +45,7 @@
                                             'placeholder' => 'Select Breed',
                                             'class' => 'form-control',
                                             'id' => 'breed',
+                                            'required' => 'required',
                                         ]) !!}
                                     </div>
                                 </div>
@@ -89,7 +90,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Date of Birth:</label>
-                                        <input type="date" id="birth_date" class="form-control" placeholder="Date of Birth" name="date_of_birth" value="{{ old('date_of_birth') }}" max="{{ date('Y-m-d') }}">
+                                        <input type="date" id="birth_date" class="form-control" placeholder="Date of Birth" name="date_of_birth" value="{{ old('date_of_birth') }}" max="{{ date('Y-m-d') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -124,10 +125,17 @@
             var breedValue = document.getElementById('breed').value;
             var crossBreedDiv = document.getElementById('cross_breed');
 
+            var breed1Input = document.getElementById('breed1');
+            var breed2Input = document.getElementById('breed2');
+
             if (breedValue == 13) {
                 crossBreedDiv.style.display = 'block';
+                breed1Input.setAttribute('required', 'required'); // Set required attribute
+                breed2Input.setAttribute('required', 'required'); // Set required attribute
             } else {
                 crossBreedDiv.style.display = 'none';
+                breed1Input.removeAttribute('required'); // Remove required attribute
+                breed2Input.removeAttribute('required'); // Remove required attribute
             }
         }
 
