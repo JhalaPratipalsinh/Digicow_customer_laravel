@@ -38,6 +38,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                                     'placeholder' => 'Cows Name',
                                     'class' => 'form-control',
                                     'id' => 'breed',
+                                    'required' => 'required'
                                     ]) !!}
                                 </div>
                             </div>

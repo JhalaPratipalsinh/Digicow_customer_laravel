@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <label>Feed Type</label>
                                         <input type="text" class="form-control" placeholder="Feed Type"
-                                        name="feed" value="{{ old('feed') }}">
+                                        name="feed" value="{{ old('feed') }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     <div class="form-group">
                                         <label>Select Date:</label>
                                         <input type="date" class="form-control" placeholder="Select Date"
-                                        name="date_selected" value="{{ old('date_selected') }}">
+                                        name="date_selected" value="{{ old('date_selected') }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                     <div class="form-group">
                                         <label>Quantity in KGs</label>
                                         <input type="text" class="form-control" placeholder="quantity"
-                                            name="quantity" value="{{ old('Quantity') }}">
+                                            name="quantity" value="{{ old('Quantity') }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                     <div class="form-group">
                                         <label>Enter Price</label>
                                         <input type="text" class="form-control" placeholder="Total"
-                                            name="total" value="{{ old('Total') }}">
+                                            name="total" value="{{ old('Total') }}" required>
                                     </div>
                                 </div>
                             </div>

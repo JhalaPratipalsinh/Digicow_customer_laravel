@@ -35,8 +35,7 @@
                                     <div class="form-group">
                                         <label>Select Date:</label>
                                         <input type="date" class="form-control" placeholder="Select Date"
-                                        name="date_selected" value="{{ old('date_selected') }}">
-
+                                        name="date_selected" value="{{ old('date_selected') }}" required>
                                     </div>
                                 </div>
 
@@ -49,7 +48,7 @@
                                     <div class="form-group">
                                         <label>Enter Total Cost</label>
                                         <input type="text" class="form-control" placeholder="total"
-                                            name="total" value="{{ old('Total') }}">
+                                            name="total" value="{{ old('Total') }}" required>
                                     </div>
                                 </div>
 
