@@ -38,6 +38,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                                     'placeholder' => '--select--',
                                     'class' => 'form-control',
                                     'id' => 'breed',
+                                    'required' => 'required',
                                     ]) !!}
                                 </div>
                             </div>
@@ -47,7 +48,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Select Date:</label>
-                                    <input type="date" class="form-control" placeholder="Select Date" name="milk_sales_date" value="{{ old('milk_sales_date') }}">
+                                    <input type="date" class="form-control" placeholder="Select Date" name="milk_sales_date" value="{{ old('milk_sales_date') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +58,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                                 <div class="form-group">
                                     <label>Select Time</label>
                                     <select class="form-control" required name="milk_time">
-                                        <option value="0" selected disabled>--select--</option>
+                                        <option value="" selected disabled>--select--</option>
                                         <option value="1">Morning(Asubuhi)</option>
                                         <option value="2">Afternoon(Mchana)</option>
                                         <option value="3">Evening(Jioni)</option>
@@ -70,7 +71,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Quantity in KGs</label>
-                                    <input type="text" class="form-control" placeholder="quantity" name="quantity" value="{{ old('quantity') }}">
+                                    <input type="text" class="form-control" placeholder="Quantity" name="quantity" value="{{ old('quantity') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +80,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Market Price</label>
-                                    <input type="text" class="form-control" placeholder="Market Price" name="milk_price" value="{{ old('milk_price') }}">
+                                    <input type="text" class="form-control" placeholder="Market Price" name="milk_price" value="{{ old('milk_price') }}" required>
                                 </div>
                             </div>
                         </div>

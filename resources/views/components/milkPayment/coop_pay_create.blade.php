@@ -38,6 +38,7 @@
                                             'placeholder' => '--Select--',
                                             'class' => 'form-control',
                                             'id' => 'breed',
+                                            'required' => 'required',
                                         ]) !!}
                                     </div>
                                 </div>
@@ -48,7 +49,7 @@
                                     <div class="form-group">
                                         <label>Amount Paid</label>
                                         <input type="text" class="form-control" placeholder="Amount Paid" name="paid"
-                                            value="{{ old('paid') }}">
+                                            value="{{ old('paid') }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +59,7 @@
                                     <div class="form-group">
                                         <label>Select Date:</label>
                                         <input type="date" class="form-control" placeholder="Select Date"
-                                            name="milk_pament_date" value="{{ old('milk_pament_date') }}">
+                                            name="milk_pament_date" value="{{ old('milk_pament_date') }}" required>
                                     </div>
                                 </div>
                             </div>
