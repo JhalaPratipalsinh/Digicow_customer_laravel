@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Session;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\DataTableRS;
+use App\Imports\MyExcelImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CowControllere extends Controller
 {
@@ -117,6 +119,18 @@ class CowControllere extends Controller
         }
     }
 
+    public function importExcel(Request $request)
+    {
+        $request->validate([
+            'excel_file' => 'required|mimes:xlsx,csv,txt' // Validate the uploaded file format
+        ]);
+        $file = $request->file('excel_file'); // Use the correct name 'excel_file'
+        $import = new MyExcelImport;
+
+        Excel::import($import, $file);
+
+        return redirect()->back()->with('success', 'Excel file imported and data inserted into the database successfully.');
+    }
 
     /**
      * Load View

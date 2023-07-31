@@ -26,9 +26,10 @@
                         <!-- /.card-header -->
 
                         <!-- .card-body -->
-                        {{ Form::open(['url' => URL::to('cow/register-store'), 'files' => true, 'class' => 'multiple-form-submit']) }}
+
 
                         <div class="card-body">
+                            {{ Form::open(['url' => URL::to('cow/register-store'), 'files' => true, 'class' => 'multiple-form-submit']) }}
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -101,11 +102,51 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary multiple-form-submit">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ Form::close() }}
 
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary multiple-form-submit">Save</button>
+                            {{ Form::open(['url' => URL::to('cow/register-excel-store'), 'files' => true, 'class' => 'multiple-form-submit']) }}
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label>------------------------OR---------------------</label>
+                                    </div>
+                                    <div style="color: red">
+                                        <b>Notes:</b>
+                                        <ul>
+                                            <li>You can download sample file from here. <a href="{{ asset('assets/upload/cow_upload.xlsx') }}" target="_blank">Download</a></li>
+                                            <li>File should be .CSV (comma-delimited) only. Better you dwonload sample file and change in it.</li>
+                                            <li>Spelling mistake in breed and cow group can create error in insert.</li>
+                                            <li>"No of Calvings/Lactations" should be number only</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label>Upload CSV file</label>
+                                        <input type="file" class="form-control" name="excel_file" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary multiple-form-submit">Upload</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ Form::close() }}
                         </div>
-                        {{ Form::close() }}
                         <!-- /.card-body -->
                     </div>
                 </div>

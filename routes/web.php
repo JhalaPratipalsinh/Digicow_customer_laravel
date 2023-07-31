@@ -46,6 +46,7 @@ Route::group(['middleware' => UserMiddleware::class], function () {
     Route::prefix('cow')->group(function () {
         Route::get('new-register', [CowControllere::class, 'newRegister']);
         Route::post('register-store', [CowControllere::class, 'registerStore']);
+        Route::post('register-excel-store', [CowControllere::class, 'importExcel']);
 
         Route::get('sold-register', [CowControllere::class, 'soldRegister']);
         Route::post('sold-store', [CowControllere::class, 'soldRegisterStore']);
