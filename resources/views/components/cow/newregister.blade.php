@@ -120,9 +120,9 @@
                                     <div style="color: red">
                                         <b>Notes:</b>
                                         <ul>
-                                            <li>You can download sample file from here. <a href="{{ asset('assets/upload/cow_upload.xlsx') }}" target="_blank">Download</a></li>
-                                            <li>File should be .CSV (comma-delimited) only. Better you dwonload sample file and change in it.</li>
-                                            <li>Spelling mistake in breed and cow group can create error in insert.</li>
+                                            <li>Please download sample file from here. <a href="{{ asset('assets/upload/cow_upload.xlsx') }}" target="_blank">Download</a></li>
+                                            <li>File should be .xls or xlsx only. Better you download sample file and change in it.</li>
+                                            <li>Select proper breed and cow group, Spelling mistake in breed and group can create error in insert.</li>
                                             <li>"No of Calvings/Lactations" should be number only</li>
                                         </ul>
                                     </div>
