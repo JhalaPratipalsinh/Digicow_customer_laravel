@@ -169,8 +169,11 @@
     </section>
     <!-- /.content -->
 @endsection
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 @section('scripts')
+    <!-- In the head section or before the closing body tag -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
         $(document).ready(function() {
             $('#cow-list').DataTable();
@@ -195,9 +198,7 @@
         $("#cow_id").change(function() {
             $('#form1').submit();
         });
-    </script>
 
-    <script>
         //-------------
         //- BAR CHART -
         //-------------
@@ -236,5 +237,5 @@
             data: barChartData,
             options: barChartOptions
         })
-    </scrip>
+    </script>
 @endsection
