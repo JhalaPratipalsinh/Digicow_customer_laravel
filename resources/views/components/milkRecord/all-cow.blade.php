@@ -153,6 +153,8 @@
 @endsection
 
 @section('scripts')
+<!-- In the head section or before the closing body tag -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         $(document).ready(function() {
             $('#cow-list').DataTable();
