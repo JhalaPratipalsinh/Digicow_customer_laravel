@@ -38,6 +38,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                                     'placeholder' => 'Cows Name',
                                     'class' => 'form-control',
                                     'id' => 'breed',
+                                    'required' => 'required',
                                     ]) !!}
                                 </div>
                             </div>
@@ -47,7 +48,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Date of De-wormer Record:</label>
-                                    <input type="date" class="form-control" placeholder="Date of De-wormer Record" name="treatment_date" value="{{ old('treatment_date') }}">
+                                    <input type="date" required class="form-control" placeholder="Date of De-wormer Record" name="treatment_date" value="{{ old('treatment_date') }}">
                                 </div>
                             </div>
                         </div>
@@ -56,7 +57,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>De-wormer</label>
-                                    <input type="text" class="form-control" placeholder="De-wormer" name="diagnosis" value="{{ old('diagnosis') }}">
+                                    <input type="text" required class="form-control" placeholder="De-wormer" name="diagnosis" value="{{ old('diagnosis') }}">
                                 </div>
                             </div>
                         </div>
@@ -65,7 +66,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Cost</label>
-                                    <input type="text" class="form-control" placeholder="Cost" name="cost" value="{{ old('cost') }}">
+                                    <input type="text" required class="form-control" placeholder="Cost" name="cost" value="{{ old('cost') }}">
                                 </div>
                             </div>
                         </div>
