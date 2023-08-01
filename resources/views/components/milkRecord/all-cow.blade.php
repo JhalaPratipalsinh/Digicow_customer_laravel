@@ -4,9 +4,9 @@
     <!-- Content Header (Page header) -->
     @php
         $breadcrumb = '<li class="breadcrumb-item"><a href="">Dashboard</a></li>';
-        $breadcrumb .= '<li class="breadcrumb-item active">Milk Production Report for all Cow</li>';
+        $breadcrumb .= '<li class="breadcrumb-item active">Milk Production Report for All Cow</li>';
     @endphp
-    <x-backend-breadcrumb title="Milk Production Report for all Cow" breadcrumb="{{ $breadcrumb }}" />
+    <x-backend-breadcrumb title="Milk Production Report for All Cow" breadcrumb="{{ $breadcrumb }}" />
     <!-- /.content-header -->
 
     <!-- Main content -->
