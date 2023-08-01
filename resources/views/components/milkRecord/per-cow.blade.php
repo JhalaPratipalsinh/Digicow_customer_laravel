@@ -169,7 +169,7 @@
     </section>
     <!-- /.content -->
 @endsection
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @section('scripts')
     <script>
         $(document).ready(function() {
@@ -195,7 +195,9 @@
         $("#cow_id").change(function() {
             $('#form1').submit();
         });
+    </script>
 
+    <script>
         //-------------
         //- BAR CHART -
         //-------------
@@ -234,5 +236,5 @@
             data: barChartData,
             options: barChartOptions
         })
-    </script>
+    </scrip>
 @endsection
