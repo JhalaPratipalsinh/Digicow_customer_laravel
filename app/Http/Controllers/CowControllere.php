@@ -217,7 +217,7 @@ class CowControllere extends Controller
                 'insert_from' => 'web',
                 'cow_id' => $request->cow_id,
                 'cow_name' => $cowname->title,
-                'death_date' => $request->sales_date,
+                'death_date' => $request->death_date,
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 
