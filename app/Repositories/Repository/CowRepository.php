@@ -13,7 +13,7 @@ use Carbon\Carbon;
 class CowRepository implements CowRepositoryInterface
 {
 
-    public function createOrUpdate(array $data, string $id = null) : Cow
+    public function createOrUpdate(array $data, string $id = null): Cow
     {
         if (!isset($id)) {
             $Cow = new Cow($data);
@@ -85,9 +85,9 @@ class CowRepository implements CowRepositoryInterface
      * @param [type] $searchValue
      * @return array
      */
-    public function getAll(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null, array $where) : array
+    public function getAll(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null, array $where): array
     {
-       // dd($searchValue);
+        // dd($searchValue);
         $cow = Cow::where('id', '<>', null);
 
         if (!empty($with)) {
@@ -95,27 +95,30 @@ class CowRepository implements CowRepositoryInterface
         }
 
         if ($searchValue) {
+            $cow->where(function ($data) use ($searchValue) {
+                $data->where('date_of_birth', 'like', '%' . $searchValue . '%');
+                $data->orWhere('title', 'like', '%' . $searchValue . '%');
+                $data->orWhere('status', 'like', '%' . $searchValue . '%');
 
-            $cow->where('date_of_birth', 'like', '%' . $searchValue . '%');
-            $cow->orWhere('title', 'like', '%' . $searchValue . '%');
-            $cow->orWhere('status', 'like', '%' . $searchValue . '%');
+                $data->orWhereHas('breed', function ($breed) use ($searchValue) {
 
-            $cow->orWhereHas('breed', function ($breed) use ($searchValue) {
+                    $breed->where('name', 'like', '%' . $searchValue . '%');
 
-                $breed->where('name', 'like', '%' . $searchValue . '%');
+                });
 
-            });
+                $data->orWhereHas('group', function ($group) use ($searchValue) {
 
-            $cow->orWhereHas('group', function ($group) use ($searchValue) {
+                    $group->where('name', 'like', '%' . $searchValue . '%');
 
-                $group->where('name', 'like', '%' . $searchValue . '%');
-
+                });
             });
         }
 
         if (!empty($where)) {
-            $cow->where('mobile_number', $where['mobile_number']) ;
+            $cow->where('mobile_number', $where['mobile_number']);
         }
+
+        $cow->where('deleted_at', '=', NULL);
 
         $clone_cow = clone $cow;
         $totalRecords = $clone_cow->count();
@@ -124,13 +127,15 @@ class CowRepository implements CowRepositoryInterface
             $cow->take($rawperpage)->skip($start);
         }
 
+
+
         $result = $cow->get();
 
         return ['total' => $totalRecords, 'data' => $result];
     }
 
 
-     /**
+    /**
      * Get All
      *
      * @param array $with
@@ -141,7 +146,7 @@ class CowRepository implements CowRepositoryInterface
      * @param [type] $searchValue
      * @return array
      */
-    public function getAllDeadCow(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null , array $where) : array
+    public function getAllDeadCow(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null, array $where): array
     {
         $dedcow = DeadCow::where('id', '<>', null);
 
@@ -150,14 +155,14 @@ class CowRepository implements CowRepositoryInterface
         }
 
         if (isset($where)) {
-            $dedcow->where('mobile_number', $where['mobile_number']) ;
+            $dedcow->where('mobile_number', $where['mobile_number']);
         }
 
         $dedcow->where('cow_category', '=', 'cow');
         $dedcow->where('deleted_at', '=', NULL);
 
         if ($searchValue) {
-            $dedcow->where(function($data) use ($searchValue){
+            $dedcow->where(function ($data) use ($searchValue) {
 
                 $data->where('cow_name', 'like', '%' . $searchValue . '%');
 
@@ -166,12 +171,11 @@ class CowRepository implements CowRepositoryInterface
                 $data->orWhere('death_date', 'like', '%' . $searchValue . '%');
 
                 $data->orWhere('carcass_amount', 'like', '%' . $searchValue . '%');
-
             });
         }
 
-    
-        
+
+
         $clone_cow = clone $dedcow;
         $totalRecords = $clone_cow->count();
 
@@ -185,7 +189,7 @@ class CowRepository implements CowRepositoryInterface
     }
 
 
-     /**
+    /**
      * Get All
      *
      * @param array $with
@@ -196,7 +200,7 @@ class CowRepository implements CowRepositoryInterface
      * @param [type] $searchValue
      * @return array
      */
-    public function getAllSoldCow(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null , array $where) : array
+    public function getAllSoldCow(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null, array $where): array
     {
         $soldcow = SoldCow::where('id', '<>', null);
 
@@ -205,13 +209,13 @@ class CowRepository implements CowRepositoryInterface
         }
 
         if (!empty($where)) {
-            $soldcow->where('phone_number', $where['mobile_number']) ;
+            $soldcow->where('phone_number', $where['mobile_number']);
         }
         $soldcow->where('cow_category', '=', 'cow');
         $soldcow->where('deleted_at', '=', NULL);
 
         if ($searchValue) {
-            $soldcow->where(function($data) use ($searchValue){
+            $soldcow->where(function ($data) use ($searchValue) {
 
                 $data->where('cow_name', 'like', '%' . $searchValue . '%');
 
@@ -220,7 +224,6 @@ class CowRepository implements CowRepositoryInterface
                 $data->orWhere('amount', 'like', '%' . $searchValue . '%');
 
                 $data->orWhere('sales_date', 'like', '%' . $searchValue . '%');
-
             });
         }
 
@@ -249,7 +252,7 @@ class CowRepository implements CowRepositoryInterface
      * @param [type] $searchValue
      * @return array
      */
-    public function getAllDeleteCow(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null , array $where) : array
+    public function getAllDeleteCow(array $with = [], $start = null, $rawperpage = null, $columnName = null, $columnSortOrder = null, $searchValue = null, array $where): array
     {
         $soldcow = Cow::where('id', '<>', null);
 
@@ -258,7 +261,7 @@ class CowRepository implements CowRepositoryInterface
         }
 
         if (!empty($where)) {
-            $soldcow->where('mobile_number', $where['mobile_number']) ;
+            $soldcow->where('mobile_number', $where['mobile_number']);
         }
 
 
@@ -280,12 +283,11 @@ class CowRepository implements CowRepositoryInterface
     public function getLactatingCows(array $where = [])
     {
         $lact_cow = Cow::select(DB::raw('count(id) as id'))->where($where);
-        $lact_cow->where('group_id', 1) ;
+        $lact_cow->where('group_id', 1);
         $result = $lact_cow->get();
-        if($result){
+        if ($result) {
             return $result[0]['id'];
-        }
-        else{
+        } else {
             return 0;
         }
     }
@@ -293,12 +295,11 @@ class CowRepository implements CowRepositoryInterface
     public function getDryingCows(array $where = [])
     {
         $lact_cow = Cow::select(DB::raw('count(id) as id'))->where($where);
-        $lact_cow->where('group_id', 2) ;
+        $lact_cow->where('group_id', 2);
         $result = $lact_cow->get();
-        if($result){
+        if ($result) {
             return $result[0]['id'];
-        }
-        else{
+        } else {
             return 0;
         }
     }
@@ -306,12 +307,11 @@ class CowRepository implements CowRepositoryInterface
     public function getCalfCows(array $where = [])
     {
         $lact_cow = Cow::select(DB::raw('count(id) as id'))->where($where);
-        $lact_cow->where('group_id', 3) ;
+        $lact_cow->where('group_id', 3);
         $result = $lact_cow->get();
-        if($result){
+        if ($result) {
             return $result[0]['id'];
-        }
-        else{
+        } else {
             return 0;
         }
     }
@@ -429,5 +429,4 @@ class CowRepository implements CowRepositoryInterface
 
     }
     */
-
 }

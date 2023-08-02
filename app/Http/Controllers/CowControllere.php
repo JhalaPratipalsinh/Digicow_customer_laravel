@@ -335,6 +335,16 @@ class CowControllere extends Controller
     }
 
 
+    public function deleteviewCow($id)
+    {
+        $request_data['deleted_at'] = date('Y-m-d H:i:s');
+
+        $this->cowRepository->createOrUpdate($request_data, $id);
+        Session::flash('message_success', 'Delete Cow');
+        return redirect('cow/list');
+    }
+
+
 
     public function soldList(){
 

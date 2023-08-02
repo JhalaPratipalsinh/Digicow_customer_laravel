@@ -72,7 +72,7 @@ $('#cow-list').DataTable({
             // </a>
             var action = `
 
-            <a href="`+ BASE_URL + `/farmer/farmer-remove/` + row.farmer_vet_id + `" class="btn btn-sm btn-danger" title="Remove" onclick="return confirm('Are you sure?')">
+            <a href="`+ BASE_URL + `/cow/cow-delete/` + row.id + `" class="btn btn-sm btn-danger" title="Remove" onclick="return confirm('Are you sure?')">
                 <i class="fa fa-trash"></i>
             </a>
             `;

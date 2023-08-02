@@ -59,6 +59,8 @@ Route::group(['middleware' => UserMiddleware::class], function () {
 
         Route::get('list', [CowControllere::class, 'cowList']);
         Route::post('paginate', [CowControllere::class, 'paginateCow'])->middleware([DataTablePaginate::class]);
+        Route::get('cow-delete/{cow_id}', [CowControllere::class, 'deleteviewCow']);
+
 
         Route::get('dead-list', [CowControllere::class, 'deadList']);
         Route::post('dead-paginate', [CowControllere::class, 'paginateDead'])->middleware([DataTablePaginate::class]);
