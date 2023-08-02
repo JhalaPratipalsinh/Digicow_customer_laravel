@@ -48,7 +48,7 @@ $breadcrumb .= '<li class="breadcrumb-item active">Create</li>';
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Date of Health Record:</label>
-                                    <input type="date" required class="form-control" placeholder="Date of Health Record" name="treatment_date" value="{{ old('treatment_date') }}">
+                                    <input type="date" required class="form-control" placeholder="Date of Health Record" name="treatment_date" value="{{ old('treatment_date') }}" max="{{ date('Y-m-d') }}">
                                 </div>
                             </div>
                         </div>
