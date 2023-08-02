@@ -95,21 +95,22 @@ class CowRepository implements CowRepositoryInterface
         }
 
         if ($searchValue) {
+            $cow->where(function ($data) use ($searchValue) {
+                $data->where('date_of_birth', 'like', '%' . $searchValue . '%');
+                $data->orWhere('title', 'like', '%' . $searchValue . '%');
+                $data->orWhere('status', 'like', '%' . $searchValue . '%');
 
-            $cow->where('date_of_birth', 'like', '%' . $searchValue . '%');
-            $cow->orWhere('title', 'like', '%' . $searchValue . '%');
-            $cow->orWhere('status', 'like', '%' . $searchValue . '%');
+                $data->orWhereHas('breed', function ($breed) use ($searchValue) {
 
-            $cow->orWhereHas('breed', function ($breed) use ($searchValue) {
+                    $breed->where('name', 'like', '%' . $searchValue . '%');
 
-                $breed->where('name', 'like', '%' . $searchValue . '%');
+                });
 
-            });
+                $data->orWhereHas('group', function ($group) use ($searchValue) {
 
-            $cow->orWhereHas('group', function ($group) use ($searchValue) {
+                    $group->where('name', 'like', '%' . $searchValue . '%');
 
-                $group->where('name', 'like', '%' . $searchValue . '%');
-
+                });
             });
         }
 
@@ -170,8 +171,8 @@ class CowRepository implements CowRepositoryInterface
             });
         }
 
-    
-        
+
+
         $clone_cow = clone $dedcow;
         $totalRecords = $clone_cow->count();
 
