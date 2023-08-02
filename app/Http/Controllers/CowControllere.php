@@ -122,13 +122,13 @@ class CowControllere extends Controller
     public function importExcel(Request $request)
     {
         $request->validate([
-            'excel_file' => 'required|mimes:xlsx,csv,txt' // Validate the uploaded file format
+            'excel_file' => 'required|mimes:xlsx,csv,xls' // Validate the uploaded file format
         ]);
         $file = $request->file('excel_file'); // Use the correct name 'excel_file'
         $import = new MyExcelImport;
 
         Excel::import($import, $file);
-
+        Session::flash('message_success', 'Records Uploaded successfully.');
         return redirect()->back()->with('success', 'Excel file imported and data inserted into the database successfully.');
     }
 
