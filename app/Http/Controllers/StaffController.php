@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Http\Resources\DataTableRS;
 use App\Models\Staff;
+use App\Models\User;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 
 class StaffController extends Controller
@@ -99,6 +100,10 @@ class StaffController extends Controller
         $user = Staff::find($request->user_id);
         $user->status = $request->status;
         $user->save();
+
+        $farmhand = User::where('mobile_number', $user->staff_mobile_number)->first();
+        $farmhand->flag = 0;
+        $farmhand->save();
 
         return response()->json(['success'=>'Status change successfully.']);
     }

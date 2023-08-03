@@ -34,7 +34,7 @@ class User extends Authenticatable
         'activation_code',
         'user_type',
         'parent',
-        'parent',
+        'flag',
         'package',
         'package_date',
         'trail_used_flag',
