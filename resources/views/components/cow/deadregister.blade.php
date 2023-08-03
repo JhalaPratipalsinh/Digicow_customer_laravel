@@ -38,6 +38,7 @@
                                             'placeholder' => 'Cows Name',
                                             'class' => 'form-control',
                                             'id' => 'breed',
+                                            'required' => 'required',
                                         ]) !!}
                                     </div>
                                 </div>
@@ -46,7 +47,7 @@
                                     <div class="form-group">
                                         <label>Death Date:</label>
                                         <input type="date" class="form-control" placeholder="Select Date"
-                                            name="death_date" value="{{ old('death_date') }}">
+                                            name="death_date" value="{{ old('death_date') }}" max="{{ date('Y-m-d') }}" required>
                                     </div>
                                 </div>
 
@@ -54,7 +55,7 @@
                                     <div class="form-group">
                                         <label>Cause of Death</label>
                                         <input type="text" class="form-control" placeholder="Cause of Death"
-                                            name="cause_of_death" value="{{ old('cause_of_death') }}">
+                                            name="cause_of_death" value="{{ old('cause_of_death') }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +65,7 @@
                                     <div class="form-group">
                                         <label>Carcass Amount</label>
                                         <input type="text" class="form-control" placeholder="Carcass Amount" name="carcass_amount"
-                                            value="{{ old('carcass_amount') }}">
+                                            value="{{ old('carcass_amount') }}" required>
                                     </div>
                                 </div>
                             </div>

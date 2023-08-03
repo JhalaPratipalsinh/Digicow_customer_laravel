@@ -38,6 +38,7 @@
                                             'placeholder' => 'Cows Name',
                                             'class' => 'form-control',
                                             'id' => 'breed',
+                                            'required' => 'required',
                                         ]) !!}
                                     </div>
                                 </div>
@@ -46,7 +47,7 @@
                                     <div class="form-group">
                                         <label>Select Date:</label>
                                         <input type="date" class="form-control" placeholder="Select Date"
-                                            name="sales_date" value="{{ old('sales_date') }}">
+                                            name="sales_date" value="{{ old('sales_date') }}" max="{{ date('Y-m-d') }}" required>
                                     </div>
                                 </div>
 
@@ -54,7 +55,7 @@
                                     <div class="form-group">
                                         <label>Buyer s Name</label>
                                         <input type="text" class="form-control" placeholder="Buyer's Name"
-                                            name="buyer_name" value="{{ old('buyer_name') }}">
+                                            name="buyer_name" value="{{ old('buyer_name') }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +65,7 @@
                                     <div class="form-group">
                                         <label>Amount Sold</label>
                                         <input type="text" class="form-control" placeholder="Amount Sold" name="amount"
-                                            value="{{ old('amount') }}">
+                                            value="{{ old('amount') }}" required>
                                     </div>
                                 </div>
                             </div>
