@@ -81,6 +81,7 @@ class BreedingController extends Controller
             $mobile = Auth::guard('web')->user()['mobile_number'];
 
             $date = date('Y-m-d H:i:s', strtotime($_POST['date']));
+            $date_dt = date('Y-m-d', strtotime($_POST['date']));
 
             $expected_date_of_birth = new DateTime($date);
             $expected_date_of_birth->add(new DateInterval('P281D'));
@@ -114,6 +115,7 @@ class BreedingController extends Controller
                 'mobile' => $mobile,
                 'no_straw' => $request->no_straw,
                 'repeats' => 0,
+                'record_type' => 'digicow',
                 'straw_breed' => $request->straw_breed,
                 'pg_status' => "0",
                 'drying_date' => $expected_drying_date->format('Y-m-d H:i:s'),
@@ -121,6 +123,8 @@ class BreedingController extends Controller
                 'expected_repeat_date' => $expected_repeat_date->format('Y-m-d H:i:s'),
                 'pregnancy_date' => $expected_confirmation_date->format('Y-m-d H:i:s'),
                 'strimingup_date' => $expected_streaming_date->format('Y-m-d H:i:s'),
+                'date_dt' => $date_dt,
+                'is_verified' => 0,
                 'first_heat' => $first_heat_date->format('Y-m-d H:i:s'),
                 'second_heat' => $second_heat_date->format('Y-m-d H:i:s'),
                 'sync_at' => date('Y-m-d H:i:s'),
